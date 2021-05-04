@@ -82,7 +82,7 @@
 <p><span class="math display">\[
   \omega \sim \sqrt{\frac{g}{l}}
 \]</span></p>
-<p>が分かる。長さが長くなれば振れ方が遅くなり、重力が強ければ早くなるという 直感に合う結果となった。さらに、{}ということも分かる。 何か問題に取り組むとき、ある物理量が他の物理量にどのように依存するべきかを 考えることが非常に重要である。</p>
+<p>が分かる。長さが長くなれば振れ方が遅くなり、重力が強ければ早くなるという 直感に合う結果となった。さらに、<strong>周波数が質量に依存しない</strong> ということも分かる。何か問題に取り組むとき、ある物理量が他の物理量にどのように依存するべきかを考えることが非常に重要である。</p>
 <h3 id="section-2">2. (1)</h3>
 <p>ボールの運動は二次元的であるので、二つの自由度があればよい。鉛直方向を<span class="math inline">\(y\)</span>、水平方向を<span class="math inline">\(x\)</span>とすると、運動方程式はそれぞれ、</p>
 <p><span class="math display">\[
@@ -209,7 +209,7 @@
 <p>である。展開を1次で打ち切ると、<span class="math inline">\(\sin x \sim x\)</span>であり、3次まで取ると、<span class="math inline">\(\sin x \sim x - x^3/6\)</span>である。特に<span class="math inline">\(x=\pi/2\)</span>を代入した場合、もとの関数では<span class="math inline">\(1.00\)</span>、1次まででは<span class="math inline">\(\pi/2 \sim 1.57\)</span>、3次まで取ると<span class="math inline">\((\pi/2) - (\pi/2)^3/6 \sim 0.92\)</span>と急速に近似が良くなることが分かる。</p>
 <h2 id="解説">解説</h2>
 <h3 id="次元">次元</h3>
-<p>物理数学においてもっとも重要なことは、すべての量に単位があるということである。 単位は、たとえば長さ<span class="math inline">\([m]\)</span>だったり、エネルギー<span class="math inline">\([J]\)</span>だったりするだろう。 このような単位を、物理では{}と呼ぶ。</p>
+<p>物理数学においてもっとも重要なことは、すべての量に単位があるということである。 単位は、たとえば長さ<span class="math inline">\([m]\)</span>だったり、エネルギー<span class="math inline">\([J]\)</span>だったりするだろう。 このような単位を、物理では <strong>次元(dimension)</strong> と呼ぶ。</p>
 <p>物理数学において絶対に気をつけて欲しいことは <strong>次元の異なる量を足したり引いたりしない</strong>ということだ。１メートルのものと３キログラムのものを足す、ということは全くのナンセンスである。次元の異なる量の加減算をしないということに気をつけるだけで、計算ミスをかなり減らすことができる。次元の異なる量を掛けたり割ったりすることはできる。その場合、結果の次元ももとの量の次元を掛けたり割ったりしたものになる。</p>
 <p>たとえば速度を考えよう。速度は、ある距離<span class="math inline">\([m]\)</span>を進むのにかかった時間<span class="math inline">\([s]\)</span>であるので、次元はメートル毎秒<span class="math inline">\([m/s]\)</span>などとなる。このように次元は角括弧<span class="math inline">\([]\)</span>で表現する。物理で扱う基本的な次元は、長さ<span class="math inline">\([L]\)</span>、質量<span class="math inline">\([M]\)</span>、時間<span class="math inline">\([T]\)</span>、電流<span class="math inline">\([A]\)</span>などであり、加速度や力など、他の物理量はこれらの組み合わせで表すことができる<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>。</p>
 <p>次元の異なるものを足してはならないという制限から、 指数関数、対数といった<strong>初等超越関数の引数には次元のある量をいれてはならない</strong>。要するに指数関数の肩に何か物理量が乗る場合には、同じ次元を持つ量で無次元化してやらねばならない。</p>
