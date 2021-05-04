@@ -48,7 +48,7 @@ $$
 
 $$
 \begin{aligned}
-  [1/T] &= [L^\alpha] [M^\beta] [M^\gamma L^\gamma T^{-2\gamma}]\\
+  \left[1/T \right] &= [L^\alpha] [M^\beta] [M^\gamma L^\gamma T^{-2\gamma}]\\
   T^{-1} &= L^{\alpha+\gamma} M^{\beta} T^{-2\gamma}
 \end{aligned}
 $$
