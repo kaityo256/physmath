@@ -9,6 +9,7 @@ all: $(HTML)
 
 index.md: README.md
 	sed 's/README.md/index.html/' $< > $@
+	sed -i 's/answer.md/answer.html/' $@
 
 index.html: index.md
 	pandoc -s $< -o $@ $(PANDOC_HTMLOPT)

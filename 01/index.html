@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title></title>
+    <style type="text/css">
+      code {
+        white-space: pre;
+      }
+    </style>
+        <style type="text/css">
+      div.sourceCode {
+        overflow-x: auto;
+      }
+
+      table.sourceCode,
+      tr.sourceCode,
+      td.lineNumbers,
+      td.sourceCode {
+        margin: 0;
+        padding: 0;
+        vertical-align: baseline;
+        border: none;
+      }
+
+      table.sourceCode {
+        width: 100%;
+        line-height: 100%;
+      }
+
+      td.lineNumbers {
+        text-align: right;
+        padding-right: 4px;
+        padding-left: 4px;
+        color: #aaaaaa;
+        border-right: 1px solid #aaaaaa;
+      }
+
+      td.sourceCode {
+        padding-left: 5px;
+      }
+
+      code>span.kw {
+        color: #007020;
+        font-weight: bold;
+      }
+
+      /* Keyword */
+      code>span.dt {
+        color: #902000;
+      }
+
+      /* DataType */
+      code>span.dv {
+        color: #40a070;
+      }
+
+      /* DecVal */
+      code>span.bn {
+        color: #40a070;
+      }
+
+      /* BaseN */
+      code>span.fl {
+        color: #40a070;
+      }
+
+      /* Float */
+      code>span.ch {
+        color: #4070a0;
+      }
+
+      /* Char */
+      code>span.st {
+        color: #4070a0;
+      }
+
+      /* String */
+      code>span.co {
+        color: #60a0b0;
+        font-style: italic;
+      }
+
+      /* Comment */
+      code>span.ot {
+        color: #007020;
+      }
+
+      /* Other */
+      code>span.al {
+        color: #ff0000;
+        font-weight: bold;
+      }
+
+      /* Alert */
+      code>span.fu {
+        color: #06287e;
+      }
+
+      /* Function */
+      code>span.er {
+        color: #ff0000;
+        font-weight: bold;
+      }
+
+      /* Error */
+      code>span.wa {
+        color: #60a0b0;
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      /* Warning */
+      code>span.cn {
+        color: #880000;
+      }
+
+      /* Constant */
+      code>span.sc {
+        color: #4070a0;
+      }
+
+      /* SpecialChar */
+      code>span.vs {
+        color: #4070a0;
+      }
+
+      /* VerbatimString */
+      code>span.ss {
+        color: #bb6688;
+      }
+
+      /* SpecialString */
+      code>span.va {
+        color: #19177c;
+      }
+
+      /* Variable */
+      code>span.cf {
+        color: #007020;
+        font-weight: bold;
+      }
+
+      /* ControlFlow */
+      code>span.op {
+        color: #666666;
+      }
+
+      /* Operator */
+      code>span.pp {
+        color: #bc7a00;
+      }
+
+      /* Preprocessor */
+      code>span.at {
+        color: #7d9029;
+      }
+
+      /* Attribute */
+      code>span.do {
+        color: #ba2121;
+        font-style: italic;
+      }
+
+      /* Documentation */
+      code>span.an {
+        color: #60a0b0;
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      /* Annotation */
+      code>span.cv {
+        color: #60a0b0;
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      /* CommentVar */
+      code>span.in {
+        color: #60a0b0;
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      /* Information */
+    </style>
+
+    <style>
+      .btn-square {
+        display: inline-block;
+        padding: 0.5em 0.5em;
+        text-decoration: none;
+        background: #668ad8;
+        color: #FFF;
+        border-bottom: solid 4px #626295;
+        border-radius: 5px;
+      }
+
+      .btn-square:active {
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);
+        border-bottom: none;
+      }
+
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      p.caption {
+        display: none;
+      }
+
+      img {
+        width: 100%
+      }
+
+
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://kaityo256.github.io/python_zero/github-markdown.css" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+        <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="第一回-次元解析とテイラー展開">第一回 次元解析とテイラー展開</h1>
+<h2 id="section">1.</h2>
+<p>物理量にはすべて次元(単位)がある。長さの次元を[L]、時間の次元を<span class="math inline">\([T]\)</span>、質量の次元を<span class="math inline">\([M]\)</span>と表すことにすると、速さは<span class="math inline">\([L/T]\)</span>、運動量は<span class="math inline">\([M L/T]\)</span>などの次元を持っている。次元について以下の問いに答えよ。</p>
+<h3 id="section-1">(1)</h3>
+<p>バネ定数<span class="math inline">\(k\)</span>のバネにつながれた、質量<span class="math inline">\(m\)</span>の質点がある。 この質点の振動周期<span class="math inline">\(T\)</span>は<span class="math inline">\(k\)</span>及び<span class="math inline">\(m\)</span>だけで決まるであろう。 そこで、</p>
+<p><span class="math display">\[
+T \sim k^{\alpha} m^{\beta} 
+\]</span></p>
+<p>とおいて、次元が合うように<span class="math inline">\(\alpha\)</span>、<span class="math inline">\(\beta\)</span>の値を決めよ。</p>
+<h3 id="section-2">(2)</h3>
+<p>一様重力下(重力加速度<span class="math inline">\(g\)</span>)において、質量<span class="math inline">\(m\)</span>、長さ<span class="math inline">\(l\)</span>の単振り子があるとする。 この振動周波数<span class="math inline">\(\omega\)</span>の<span class="math inline">\(m\)</span>、<span class="math inline">\(g\)</span>、<span class="math inline">\(l\)</span>依存性を知りたい。 前問と同様に、</p>
+<p><span class="math display">\[
+\omega \sim l^{\alpha} m^{\beta} g^{\gamma}
+\]</span></p>
+<p>とおいて、次元が合うように<span class="math inline">\(\alpha\)</span>、<span class="math inline">\(\beta\)</span>、<span class="math inline">\(\gamma\)</span>の値を決め、 結果について考察せよ。</p>
+<h2 id="section-3">2.</h2>
+<p>一様重力下(重力加速度<span class="math inline">\(g\)</span>)における質量<span class="math inline">\(m\)</span>のボールの運動を考える。簡単のため、空気抵抗などは無視する。</p>
+<h3 id="section-4">(1)</h3>
+<p>ボールの運動方程式を立てよ。</p>
+<h3 id="section-5">(2)</h3>
+<p>基準の位置からの高さを<span class="math inline">\(y\)</span>として、全エネルギーを書け。このとき、運動エネルギーと位置エネルギーの次元が等しいことを確かめよ。</p>
+<h3 id="section-6">(3)</h3>
+<p>運動方程式から全エネルギーが保存することを確かめよ。</p>
+<h3 id="section-7">(4)</h3>
+<p>初速<span class="math inline">\(V_0\)</span>とし、仰角<span class="math inline">\(\theta\)</span>で地面からボールを投げるとする。最も遠くに飛ぶ角度を求めよ。</p>
+<h2 id="section-8">3.</h2>
+<p>ある関数<span class="math inline">\(f(x)\)</span>を、特定の点<span class="math inline">\(x_0\)</span>の近傍で</p>
+<p><span class="math display">\[
+f(x) = c_0 + c_1(x-x_0) + c_2 (x-x_0)^2 + \cdots 
+\]</span></p>
+<p>と展開することを考える(テイラー展開)。 両辺を適当に微分し、<span class="math inline">\(x=x_0\)</span>を代入することで係数<span class="math inline">\(c_n\)</span>を求めよ。</p>
+<h2 id="section-9">4.</h2>
+<p>次の関数を<span class="math inline">\(x=0\)</span>の周りでテイラー展開せよ。</p>
+<h3 id="section-10">(1)</h3>
+<p><span class="math inline">\(\sin x\)</span></p>
+<h3 id="section-11">(2)</h3>
+<p><span class="math inline">\(\cos x\)</span></p>
+<h3 id="section-12">(3)</h3>
+<p><span class="math inline">\(\ln (1+x)\)</span></p>
+<h2 id="section-13">5.</h2>
+<p><span class="math inline">\(\sin x\)</span>を<span class="math inline">\(x=0\)</span>の周りで、<span class="math inline">\(x\)</span>について1次まで展開した場合と3次まで展開した場合で、どの程度近似の程度が異なるか、<span class="math inline">\(0 \le x \le \pi\)</span>の範囲でグラフに描いて考察せよ。特に<span class="math inline">\(x = \pi/2\)</span>を代入した場合の値の違いを見よ。</p>
+          </article>
+  </body>
+
+  </html>
