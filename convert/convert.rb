@@ -9,7 +9,7 @@ while line = gets
     kai_num += 1
     q_num = 0
     subq_num = 0
-  elsif line=~/\\question\{(.*)/
+  elsif line=~/\\question(.*)/
     q_num += 1
     puts "## #{q_num}."
     puts
