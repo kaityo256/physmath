@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title></title>
+    <style type="text/css">
+      h2 {
+        display: inline;
+      }
+
+      h3 {
+        padding-left: 1em;
+        display: inline;
+      }
+
+      p {
+        padding-left: 3em;
+      }
+
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      p.caption {
+        display: none;
+      }
+
+      img {
+        width: 100%
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://kaityo256.github.io/python_zero/github-markdown.css" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+        <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="第六回-複素積分とローラン展開">第六回 複素積分とローラン展開</h1>
+<h2 id="section">1.</h2>
+<p>複素関数<span class="math inline">\(f(z)\)</span>が点<span class="math inline">\(z_0\)</span>で微分可能であるとは、<span class="math inline">\(\lim z \rightarrow z_0\)</span>へどのように近づいても極限</p>
+<p><span class="math display">\[
+\lim_{\Delta z \rightarrow 0} \frac{f(z+\Delta z) - f(z)}{\Delta z}
+\]</span></p>
+<p>が同じ値に定まることである(ただし<span class="math inline">\(\Delta z = z - z_0\)</span>)。このとき、複素関数の微分について以下の問に答えよ。ただし、複素数<span class="math inline">\(z\)</span>を二つの実数を用いて<span class="math inline">\(z = x + iy\)</span>と、複素関数<span class="math inline">\(f(z)\)</span>を、二つの実数関数を用いて<span class="math inline">\(f(z) = u(x,y) + i v(x,y)\)</span>と表す。</p>
+<h3 id="section-1">(1)</h3>
+<p><span class="math inline">\(f(z)\)</span>が微分可能であるとき、<span class="math inline">\(u(x,y)\)</span>と<span class="math inline">\(v(x,y)\)</span>が、以下の関係式</p>
+<p><span class="math display">\[
+\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y},
+\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x},
+\]</span></p>
+<p>を満たすことを示せ。 この関係式をコーシー・リーマン(Cauchy-Riemann)の関係式という。</p>
+<h3 id="section-2">(2)</h3>
+<p>複素関数<span class="math inline">\(f(z) = z^2\)</span>はコーシー・リーマンの関係式が成り立つか確認せよ。</p>
+<h3 id="section-3">(3)</h3>
+<p>複素関数<span class="math inline">\(f(z) = z \bar{z}\)</span>はコーシー・リーマンの関係式を満たすか確認せよ。 ただし<span class="math inline">\(\bar{z}\)</span>は<span class="math inline">\(z\)</span>の複素共役を表す。</p>
+<h2 id="section-4">2.</h2>
+<p>複素関数が<span class="math inline">\(f(t) = u(t) + i v(t)\)</span>とパラメータ<span class="math inline">\(t\)</span>で表示されるとき、<span class="math inline">\(f(t)\)</span>の区間<span class="math inline">\([a,b]\)</span>での定積分を</p>
+<p><span class="math display">\[
+\int_a^b f(t) \mathrm{d} t = \int_a^b  u(t)\mathrm{d} t + i \int_a^b  v(t) \mathrm{d} t
+\]</span></p>
+<p>で定義する。このとき、以下の積分を求めよ。ただし、括弧内は積分区間である。</p>
+<h3 id="section-5">(1)</h3>
+<p><span class="math inline">\(f(z) = z^2\)</span> (原点<span class="math inline">\(0\)</span>から点<span class="math inline">\(1+i\)</span>にいたる線分)</p>
+<h3 id="section-6">(2)</h3>
+<p><span class="math inline">\(f(z) = (z-a)^n ~(n = 0,\pm 1, \pm 2,\cdots)\)</span> (点<span class="math inline">\(a\)</span>を中心とする半径<span class="math inline">\(r (&gt;0)\)</span>の円周上を反時計周りに一周)。</p>
+<h2 id="section-7">3.</h2>
+<p>関数<span class="math inline">\(f(z)\)</span>が領域<span class="math inline">\(D\)</span>において微分可能であるとき、関数<span class="math inline">\(f(z)\)</span>は<span class="math inline">\(D\)</span>において正則であるという。点<span class="math inline">\(a\)</span>が<span class="math inline">\(f(z)\)</span>の孤立特異点であり、<span class="math inline">\(f(z)が\)</span>領域<span class="math inline">\(D = \{ z | r_1 &lt; |z-a| &lt;r_2 \}\)</span>において正則であるとき、 <span class="math inline">\(f(z)\)</span>は点<span class="math inline">\(a\)</span>の周りで</p>
+<p><span class="math display">\[
+f(z) = \sum_{-\infty}^{\infty} c_n (z-a)^n
+\]</span></p>
+<p>と展開される。これを<span class="math inline">\(f(x)\)</span>の<span class="math inline">\(a\)</span>におけるローラン(Laurent)展開と呼ぶ。このとき、以下の問に答えよ。</p>
+<p>ヒント：収束半径<span class="math inline">\((|z|&lt;1)\)</span>に注意して以下の展開を利用せよ。</p>
+<p><span class="math display">\[
+\frac{1}{1+z} = 1-z+z^2-\cdots + (-1)^n z^n + \cdots
+\]</span></p>
+<h3 id="section-8">(1)</h3>
+<p><span class="math inline">\(f(z) = \displaystyle\frac{1}{z-1}\)</span>を原点を中心とし、<span class="math inline">\(|z|&lt;1\)</span>及び<span class="math inline">\(1&lt;|z|\)</span>のそれぞれの 場合についてローラン展開せよ。</p>
+<h3 id="section-9">(2)</h3>
+<p><span class="math inline">\(f(z) = \displaystyle\frac{1}{z(z-1)}\)</span>を原点を中心とし、<span class="math inline">\(|z|&lt;1\)</span>及び<span class="math inline">\(1&lt;|z|\)</span>のそれぞれの 場合についてローラン展開せよ。</p>
+          </article>
+  </body>
+
+  </html>

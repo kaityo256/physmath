@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title></title>
+    <style type="text/css">
+      h2 {
+        display: inline;
+      }
+
+      h3 {
+        padding-left: 1em;
+        display: inline;
+      }
+
+      p {
+        padding-left: 3em;
+      }
+
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      p.caption {
+        display: none;
+      }
+
+      img {
+        width: 100%
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://kaityo256.github.io/python_zero/github-markdown.css" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+        <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="第七回-留数定理とその応用">第七回 留数定理とその応用</h1>
+<h2 id="section">1.</h2>
+<p>関数<span class="math inline">\(f(z)\)</span>は領域<span class="math inline">\(D\)</span>で正則であり、<span class="math inline">\(C\)</span>は領域<span class="math inline">\(D\)</span>内の単一閉曲線であるとする。このとき、<span class="math inline">\(C\)</span>内の点<span class="math inline">\(a\)</span>について、以下の公式が成り立つ(コーシーの積分公式)。</p>
+<p><span class="math display">\[
+f(a) = \frac{1}{2\pi i} \int_C \frac{f(z)}{z-a} \mathrm{d} z
+\]</span></p>
+<p>これを用いて次の積分の値を求めよ。</p>
+<h3 id="section-1">(1)</h3>
+<p><span class="math display">\[
+\int_{|z|=2} \frac{\mathrm{e}^z}{z+1} \mathrm{d} z 
+\]</span></p>
+<p>原点を中心とし、半径<span class="math inline">\(2\)</span>の円を正の向きに一周する積分路を表す。以下同様。</p>
+<h3 id="section-2">(2)</h3>
+<p><span class="math display">\[
+\displaystyle \int_{|z|=2}  \frac{z}{z^2+1} \mathrm{d} z
+\]</span></p>
+<h2 id="section-3">2.</h2>
+<p>関数<span class="math inline">\(f(z)\)</span>は領域<span class="math inline">\(D\)</span>で正則であり、 <span class="math inline">\(C\)</span>は領域<span class="math inline">\(D\)</span>内の単一閉曲線であるとする。 このとき、<span class="math inline">\(C\)</span>内の点<span class="math inline">\(a\)</span>について、以下の公式が成り立つ(これもコーシーの積分公式)。</p>
+<p><span class="math display">\[
+f^{n}(a) = \frac{n!}{2\pi i} \int_C \frac{f(z)}{(z-a)^{n+1}} \mathrm{d} z
+\]</span></p>
+<p>これを用いて次の積分の値を求めよ。</p>
+<h3 id="section-4">(1)</h3>
+<p><span class="math display">\[
+ \displaystyle \int_{|z|=3} \frac{\mathrm{e}^{3z}}{(z-2)^2} \mathrm{d} z 
+\]</span></p>
+<h3 id="section-5">(2)</h3>
+<p><span class="math display">\[
+\displaystyle  \int_{|z|=1}  \frac{1}{z^2(z-3)} \mathrm{d} z
+\]</span></p>
+<h2 id="section-6">3.</h2>
+<p>関数<span class="math inline">\(f(z)\)</span>が、<span class="math inline">\(z=a\)</span>を孤立特異点として持つとき、</p>
+<p><span class="math display">\[
+\mathrm{Res}f(a) \equiv \frac{1}{2\pi i} \int_C f(z) \mathrm{d} z
+\]</span></p>
+<p>を<span class="math inline">\(f(z)\)</span>の<span class="math inline">\(a\)</span>における <strong>留数 (residue)</strong> と呼ぶ(ただし<span class="math inline">\(C\)</span>は<span class="math inline">\(a\)</span>の近傍を正の方向に一周する積分路とする)。以下の関数のすべての特異点における留数を求めよ。</p>
+<h3 id="section-7">(1)</h3>
+<p><span class="math display">\[
+\displaystyle \frac{\mathrm{e}^{iz}}{z^2+a^2} \qquad (a &gt; 0)
+\]</span></p>
+<h3 id="section-8">(2)</h3>
+<p><span class="math display">\[
+\displaystyle \frac{1}{z^4+1}
+\]</span></p>
+<h2 id="section-9">4.</h2>
+<p>次の実積分の値を、複素積分を利用して求めよ。</p>
+<h3 id="section-10">(1)</h3>
+<p><span class="math display">\[
+\displaystyle \int_{0}^{\infty} \frac{1}{x^4+1} \mathrm{d} x
+\]</span></p>
+<h3 id="section-11">(2)</h3>
+<p><span class="math display">\[
+\displaystyle \int_{-\infty}^{\infty} \frac{\cos k x}{x^2+1} \mathrm{d} x \qquad (k&gt;0)
+\]</span></p>
+          </article>
+  </body>
+
+  </html>

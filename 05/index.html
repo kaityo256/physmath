@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title></title>
+    <style type="text/css">
+      h2 {
+        display: inline;
+      }
+
+      h3 {
+        padding-left: 1em;
+        display: inline;
+      }
+
+      p {
+        padding-left: 3em;
+      }
+
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      p.caption {
+        display: none;
+      }
+
+      img {
+        width: 100%
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://kaityo256.github.io/python_zero/github-markdown.css" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+        <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="第五回-フーリエ変換">第五回 フーリエ変換</h1>
+<h2 id="section">1.</h2>
+<p>関数<span class="math inline">\(f(x)\)</span>について、</p>
+<p><span class="math display">\[
+\hat{f}(k) = \int_{-\infty}^{\infty} \!\!\! \mathrm{d} x f(x) \mathrm{e}^{-ikx}
+\]</span></p>
+<p>をフーリエ変換と呼び、<span class="math inline">\(\hat{f}(k) = {\mathcal F}[f(x)]\)</span>とあらわす。また、</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \!\!\! \mathrm{d} k \hat{f}(k) \mathrm{e}^{ikx}
+\]</span></p>
+<p>を逆フーリエ変換<span class="math inline">\((f(x) = {\mathcal F}^{-1}[\hat{f}(k)])\)</span>と呼ぶ。この時、以下を証明せよ。ただし、 <span class="math inline">\(f^{(n)}(\pm \infty)=0\)</span>とする。</p>
+<h3 id="section-1">(1)</h3>
+<p><span class="math inline">\({\mathcal F}\left[ a f(x) + b g(x) \right] = a{\mathcal F}[f(x)] + b{\mathcal F}[g(x)]\)</span> (線形性)</p>
+<h3 id="section-2">(2)</h3>
+<p><span class="math inline">\({\mathcal F}\left[f^{(n)}(x) \right] = (ik)^n \hat{f}(k)\)</span></p>
+<h3 id="section-3">(3)</h3>
+<p><span class="math inline">\({\mathcal F}[f(x+a)] = \mathrm{e}^{iak}\hat{f}(k)\)</span></p>
+<h3 id="section-4">(4)</h3>
+<p><span class="math inline">\({\mathcal F}[x^n f(x)] = i^n \hat{f}^{(n)}(k)\)</span></p>
+<h3 id="section-5">(5)</h3>
+<p><span class="math display">\[
+{\mathcal F}[f*g(x)] = {\mathcal F}[f(x)] {\mathcal F}[g(x)]
+\]</span></p>
+<p>ただし、<span class="math inline">\(f*g(x)\)</span>は</p>
+<p><span class="math display">\[
+f*g(x) = \int_{-\infty}^{\infty} f(x-y)g(y)\mathrm{d} y
+\]</span></p>
+<p>で定義される積分である(たたみ込み積分と呼ばれる)。</p>
+<h2 id="section-6">2.</h2>
+<p>次の関数のフーリエ変換を求めよ。ただし<span class="math inline">\(a&gt;0\)</span>とする。</p>
+<h3 id="section-7">(1)</h3>
+<p><span class="math display">\[
+f(x) = 
+\left\{
+\begin{array}{cc}
+1 &amp; \qquad |x| \le a \\
+0 &amp; \qquad |x| &gt; a \\
+\end{array}
+\right.
+\]</span></p>
+<h3 id="section-8">(2)</h3>
+<p><span class="math display">\[
+f(x) = \mathrm{e}^{-a|x|}
+\]</span></p>
+<h2 id="section-9">3.</h2>
+<p>次の微分方程式を満たす解を<span class="math inline">\(y(x)\)</span>、そのフーリエ変換を<span class="math inline">\(\hat{y}(k)\)</span>とする。 方程式全体をフーリエ変換することで<span class="math inline">\(\hat{y}(k)\)</span>を求めよ。 ### (1)</p>
+<p><span class="math display">\[
+\frac{\mathrm{d}^2 y}{\mathrm{d} x^2} - 2 \frac{\mathrm{d} y}{\mathrm{d} x} = \delta(x)
+\]</span></p>
+<h3 id="section-10">(2)</h3>
+<p><span class="math display">\[
+\frac{\mathrm{d}^2 y}{\mathrm{d} x^2} - y = \mathrm{e}^{-ax^2} \qquad (a&gt;0)
+\]</span></p>
+          </article>
+  </body>
+
+  </html>

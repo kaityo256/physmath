@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title></title>
+    <style type="text/css">
+      h2 {
+        display: inline;
+      }
+
+      h3 {
+        padding-left: 1em;
+        display: inline;
+      }
+
+      p {
+        padding-left: 3em;
+      }
+
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      p.caption {
+        display: none;
+      }
+
+      img {
+        width: 100%
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://kaityo256.github.io/python_zero/github-markdown.css" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+        <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="第四回-フーリエ級数展開と超関数">第四回 フーリエ級数展開と超関数</h1>
+<h2 id="section">1.</h2>
+<p><span class="math inline">\((-\pi \le x &lt; \pi)\)</span>で定義されている関数<span class="math inline">\(f(x)\)</span>を、</p>
+<p><span class="math display">\[
+f(x) = \frac{a_0}{2} + \sum_{n=1}^\infty (a_n \cos nx + b_n \sin nx)
+\]</span></p>
+<p>の形に展開することをフーリエ級数展開という。以下の関数を フーリエ級数展開せよ。また、<span class="math inline">\(x=0\)</span>を代入して値が正しいか確認せよ。</p>
+<h3 id="section-1">(1)</h3>
+<p><span class="math inline">\(f(x) = |x|\)</span></p>
+<h3 id="section-2">(2)</h3>
+<p><span class="math display">\[
+f(x) = 
+\left\{
+\begin{array}{cc}
+-1 &amp; \quad -\pi \le x &lt; 0 \\
+1 &amp; \quad 0 \le x \le \pi 
+\end{array}
+\right.
+\]</span></p>
+<h2 id="section-3">2.</h2>
+<p><span class="math inline">\((-\pi \le x &lt; \pi)\)</span>で定義されている関数<span class="math inline">\(f(x)\)</span>を、</p>
+<p><span class="math display">\[
+f(x) = \sum_{-\infty}^{\infty} c_n \exp{(inx)}
+\]</span></p>
+<p>の形に展開することを複素フーリエ級数展開という(<span class="math inline">\(c_n\)</span>は複素数)。 これについて以下の問いに答えよ。</p>
+<h3 id="section-4">(1)</h3>
+<p>フーリエ級数展開と、複素フーリエ級数展開を比べ、 <span class="math inline">\(c_n\)</span>を<span class="math inline">\(a_n\)</span>、<span class="math inline">\(b_n\)</span>で表せ。</p>
+<h3 id="section-5">(2)</h3>
+<p><span class="math inline">\(f(x) = \mathrm{e}^x ~(-\pi \le x &lt; \pi)\)</span> を複素フーリエ級数展開し、 この結果を用いて、</p>
+<p><span class="math display">\[
+\displaystyle\sum_{n=1}^{\infty} \frac{(-1)^n}{1+n^2}
+\]</span></p>
+<p>の値を求めよ。</p>
+<h2 id="section-6">3.</h2>
+<p>次の積分で定義される関数<span class="math inline">\(\delta(x)\)</span>を、ディラック(Dirac)のデルタ関数という。</p>
+<p><span class="math display">\[
+\int_{-\infty}^{\infty} \!\!\! \mathrm{d} x \delta(x) f(x) =
+\int_{-\varepsilon}^{\varepsilon} \!\!\! \mathrm{d} x \delta(x) f(x) = 
+f(0)
+\]</span></p>
+<p>ただし<span class="math inline">\(\varepsilon\)</span>は任意の正数である。また、 次のような関数<span class="math inline">\(\theta(x)\)</span>を階段関数、もしくはヘビサイド(Heaviside)関数という。</p>
+<p><span class="math display">\[
+\theta(x) = 
+\left\{
+\begin{array}{cc}
+0 &amp; \quad (x &lt; 0) \\
+1 &amp; \quad (x \ge 0) \\
+\end{array}
+\right.
+\]</span></p>
+<p>これらの関数について、以下の問いに答えよ。 ただし、デルタ関数、ヘビサイド関数と内積をとる関数<span class="math inline">\(f(x)\)</span>は、 <span class="math inline">\(f(\infty) = f(-\infty) = 0\)</span>であり、何回でも微分ができる性質を持つものとする。</p>
+<h3 id="section-7">(1)</h3>
+<p>次の等式を証明せよ。</p>
+<p><span class="math display">\[
+\begin{aligned}
+x \delta(x) &amp;= 0\\
+\delta(ax) &amp;= \delta(x)/|a|, ~(a \neq 0)
+\end{aligned}
+\]</span></p>
+<h3 id="section-8">(2)</h3>
+<p>次の等式を証明せよ。</p>
+<p><span class="math display">\[
+\displaystyle\frac{\mathrm{d} \theta(x)}{\mathrm{d} x} = \delta(x)
+\]</span></p>
+<h3 id="section-9">(3)</h3>
+<p>デルタ関数<span class="math inline">\(\delta(x)\)</span>を、<span class="math inline">\((-\pi \le x &lt; \pi)\)</span>の範囲で定義されていると考えて複素フーリエ級数展開せよ。</p>
+          </article>
+  </body>
+
+  </html>
