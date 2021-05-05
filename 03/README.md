@@ -22,13 +22,17 @@ $$
 ### (2)
 
 前問で求めた固有ベクトルをそれぞれ${\bf e}_1,{\bf e}_2$とする。
-ベクトル${\bf a} =  \displaystyle
+ベクトル
+
+$$
+{\bf a} =  \displaystyle
 \left(
 \begin{array}{c}
 3 \\ 4
 \end{array}
 \right)
-$
+$$
+
 を、
 
 $$
