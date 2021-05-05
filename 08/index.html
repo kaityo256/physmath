@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title></title>
+    <style type="text/css">
+      h2 {
+        display: inline;
+      }
+
+      h3 {
+        padding-left: 1em;
+        display: inline;
+      }
+
+      p {
+        padding-left: 3em;
+      }
+
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      p.caption {
+        display: none;
+      }
+
+      img {
+        width: 100%
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://kaityo256.github.io/python_zero/github-markdown.css" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+        <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="第八回-フーリエ逆変換とジョルダンの補題">第八回 フーリエ逆変換とジョルダンの補題</h1>
+<h2 id="section">1.</h2>
+<p><span class="math inline">\(\displaystyle\lim_{|z| \rightarrow \infty} f(z) = 0\)</span>を満たす複素関数<span class="math inline">\(f(z)\)</span>を考える。 このとき、ある実数<span class="math inline">\(a&gt;0\)</span>について、積分路を以下の図の<span class="math inline">\(C_1\)</span>のように取ると、</p>
+<p><span class="math display">\[
+\lim_{R \rightarrow \infty} \int_{C} f(z)\e^{iaz} = 0
+\]</span></p>
+<p>が成り立つ(ジョルダンの補題)。<span class="math inline">\(a&lt;0\)</span>のときは<span class="math inline">\(C_2\)</span>のように取れば、同様に成り立つ。 このことに注意して、以下の問いに答えよ。</p>
+<p>TODO: 図の追加 fig/jordan.eps</p>
+<h3 id="section-1">(1)</h3>
+<p>以下の関数<span class="math inline">\(f(x)\)</span>をフーリエ変換せよ。ただし<span class="math inline">\(a&gt;0\)</span>とする。</p>
+<p><span class="math display">\[
+f(x) = \left\{
+\begin{array}{cc}
+1 &amp; \quad (-a &lt; x &lt; a) \\
+0 &amp; \mathrm{otherwise}
+\end{array}
+\right.
+\]</span></p>
+<h3 id="section-2">(2)</h3>
+<p>前問で求められたフーリエ変換<span class="math inline">\(\hat{f}(k)\)</span>を逆フーリエ変換し、<span class="math inline">\(f(x)\)</span>に一致することを確かめよ。</p>
+<p>ヒント：<span class="math inline">\(x&lt;-a\)</span>、<span class="math inline">\(-a \leq x &lt; a\)</span>、<span class="math inline">\(a \leq x\)</span>の場合にわけて積分路を考えよ。</p>
+<h2 id="section-3">2.</h2>
+<p>次の微分方程式の境界値問題を以下の手順で解け。</p>
+<p><span class="math display">\[
+\frac{\mathrm{d}^2 f(x)}{\mathrm{d} x^2} - f(x) = \mathrm{e}^{-|x|} \qquad f(\pm \infty) = f&#39;(\pm \infty)=0
+\]</span></p>
+<h3 id="section-4">(1)</h3>
+<p>微分方程式全体をフーリエ変換せよ。</p>
+<h3 id="section-5">(2)</h3>
+<p>逆フーリエ変換により、解を求めよ(ヒント：<span class="math inline">\(x&gt;0\)</span>と<span class="math inline">\(x&lt;0\)</span>に場合わけすること)。</p>
+<h3 id="section-6">(3)</h3>
+<p>解を微分方程式に代入し、実際に解であることを確かめよ。</p>
+          </article>
+  </body>
+
+  </html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title></title>
+    <style type="text/css">
+      h2 {
+        display: inline;
+      }
+
+      h3 {
+        padding-left: 1em;
+        display: inline;
+      }
+
+      p {
+        padding-left: 3em;
+      }
+
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      p.caption {
+        display: none;
+      }
+
+      img {
+        width: 100%
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://kaityo256.github.io/python_zero/github-markdown.css" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+        <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="第九回-ラプラス変換">第九回 ラプラス変換</h1>
+<h2 id="section">1.</h2>
+<p>関数<span class="math inline">\(f(x)\)</span>について、</p>
+<p><span class="math display">\[
+\hat{f}(s) = \int_{0}^{\infty} \!\!\! \mathrm{d} x f(x) \mathrm{e}^{-sx}
+\]</span></p>
+<p>をラプラス変換と呼び、<span class="math inline">\(\hat{f}(s) = {\mathcal L}[f(x)]\)</span>とあらわす。ただし、<span class="math inline">\(s\)</span>はラプラス変換が存在するように値をとった複素数である。このとき、以下を証明せよ。</p>
+<h3 id="section-1">(1)</h3>
+<p><span class="math display">\[
+{\mathcal L}\left[f^{(n)}(x) \right] = s^n \hat{f}(s) - \left\{ s^{n-1}f(0) + s^{n-2}f&#39;(0) + \cdots  \right\}
+\]</span></p>
+<h3 id="section-2">(2)</h3>
+<p><span class="math display">\[
+{\mathcal L} \left[ \mathrm{e}^{ax} f(x) \right] = \hat{f}(s-a)
+\]</span></p>
+<h3 id="section-3">(3)</h3>
+<p><span class="math display">\[
+{\mathcal L}\left[f*g(x)\right] = {\mathcal L}\left[f(x)\right] {\mathcal L}\left[g(x)\right]
+\]</span></p>
+<p>ただし、<span class="math inline">\(f*g(x)\)</span>は</p>
+<p><span class="math display">\[
+f*g(x) = \int_{0}^{x} f(x-y)g(y)\mathrm{d} y
+\]</span></p>
+<p>で定義される積分である(たたみ込み積分と呼ばれる)。</p>
+<h2 id="section-4">2.</h2>
+<p>次の関数<span class="math inline">\(f(x)\)</span>のラプラス変換を求めよ。必要であればラプラス変換が存在するための<span class="math inline">\(s\)</span>の条件も求めよ。</p>
+<h3 id="section-5">(1)</h3>
+<p><span class="math display">\[
+f(x) = 1
+\]</span></p>
+<h3 id="section-6">(2)</h3>
+<p><span class="math display">\[
+f(x) = \delta(x)
+\]</span></p>
+<h3 id="section-7">(3)</h3>
+<p><span class="math display">\[
+f(x) = x
+\]</span></p>
+<h3 id="section-8">(4)</h3>
+<p><span class="math display">\[
+f(x) = \mathrm{e}^{\alpha x}
+\]</span></p>
+<p><span class="math inline">\(\alpha\)</span>は複素定数</p>
+<h2 id="section-9">3.</h2>
+<p>関数<span class="math inline">\(f(x)\)</span>とそのラプラス変換<span class="math inline">\(\hat{f}(s)\)</span>について、 <span class="math inline">\(s = a + bi\)</span>とするとき</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{2 \pi i} \int_{a-i\infty}^{a+i\infty} \mathrm{d} s \hat{f}(s) \mathrm{e}^{sx}
+\]</span></p>
+<p>を逆ラプラス変換と呼ぶ。以下の関数を逆ラプラス変換せよ。</p>
+<h3 id="section-10">(1)</h3>
+<p><span class="math display">\[
+\hat{f}(s) = \displaystyle \frac{1}{s-\alpha}
+\]</span></p>
+<p><span class="math inline">\(\alpha\)</span>は複素定数</p>
+<h3 id="section-11">(2)</h3>
+<p><span class="math display">\[
+\hat{f}(s) =  \displaystyle\frac{s}{s^2+c^2}  
+\]</span></p>
+<p><span class="math inline">\(c\)</span>は実定数</p>
+<h2 id="section-12">4.</h2>
+<p>以下の微分方程式の初期値問題をラプラス変換を用いて解け。</p>
+<h3 id="section-13">(1)</h3>
+<p><span class="math display">\[
+\displaystyle\frac{\mathrm{d}^2 y}{\mathrm{d} x^2} - 2\frac{\mathrm{d} y}{\mathrm{d} x} + y = x
+\qquad \left( y(0) = y&#39;(0) = 0 \right)
+\]</span></p>
+<h3 id="section-14">(2)</h3>
+<p><span class="math display">\[
+\displaystyle\frac{\mathrm{d}^2 y}{\mathrm{d} x^2} + 2\frac{\mathrm{d} y}{\mathrm{d} x} + y = 1
+\qquad \left( y(0) = y&#39;(0) = 0 \right)
+\]</span></p>
+          </article>
+  </body>
+
+  </html>
