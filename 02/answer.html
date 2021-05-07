@@ -54,7 +54,16 @@
 <p><span class="math display">\[
 \frac{\mathrm{d} y}{\mathrm{d} x} = \frac{\ln x}{y} 
 \]</span></p>
-<p>変数分離型であるから、<span class="math inline">\(y\)</span>を左辺に移項して<span class="math inline">\(x\)</span>で積分すればよい。<span class="math inline">\(y\)</span>の積分は問題ないであろうが、<span class="math inline">\(x\)</span>の積分は<span class="math inline">\(\ln x\)</span>を含むため、部分積分が必要となる。積分を実行すると、</p>
+<p>変数分離型であるから、<span class="math inline">\(y\)</span>を左辺に移項して<span class="math inline">\(x\)</span>で積分すればよい。<span class="math inline">\(y\)</span>の積分は問題ないであろうが、<span class="math inline">\(x\)</span>の積分は<span class="math inline">\(\ln x\)</span>を含むため、以下のように部分積分が必要となる。</p>
+<p><span class="math display">\[
+\begin{aligned}
+\int \ln x \mathrm{d}x
+&amp;= \int (x)&#39;\ln x \mathrm{d}x \\
+&amp;= x \ln x - \int x (\ln x)&#39; \mathrm{d}x \\
+&amp;= x \ln x - x + C
+\end{aligned}
+\]</span></p>
+<p>以上から、</p>
 <p><span class="math display">\[
   \frac{y^2}{2} = x \ln x - x + C
 \]</span></p>

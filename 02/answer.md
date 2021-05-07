@@ -12,7 +12,18 @@ $$
 \frac{\mathrm{d} y}{\mathrm{d} x} = \frac{\ln x}{y} 
 $$
 
-変数分離型であるから、$y$を左辺に移項して$x$で積分すればよい。$y$の積分は問題ないであろうが、$x$の積分は$\ln x$を含むため、部分積分が必要となる。積分を実行すると、
+変数分離型であるから、$y$を左辺に移項して$x$で積分すればよい。$y$の積分は問題ないであろうが、$x$の積分は$\ln x$を含むため、以下のように部分積分が必要となる。
+
+$$
+\begin{aligned}
+\int \ln x \mathrm{d}x
+&= \int (x)'\ln x \mathrm{d}x \\
+&= x \ln x - \int x (\ln x)' \mathrm{d}x \\
+&= x \ln x - x + C
+\end{aligned}
+$$
+
+以上から、
 
 $$
   \frac{y^2}{2} = x \ln x - x + C
