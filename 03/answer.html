@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title></title>
+    <style type="text/css">
+      p {
+        padding-left: 1em;
+      }
+
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      p.caption {
+        display: none;
+      }
+
+      img {
+        width: 100%
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://kaityo256.github.io/python_zero/github-markdown.css" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+        <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="第三回-基底と固有値問題">第三回 基底と固有値問題</h1>
+<h2 id="目的">目的</h2>
+<p>ベクトル空間においても、関数空間においても、内積を定義すれば線形空間として統一的に理解できることを学ぶ。特に、直交基底による展開という概念に慣れる。</p>
+<h2 id="解答">解答</h2>
+<h3 id="section">10. (1)</h3>
+<p>固有値を<span class="math inline">\(\lambda\)</span>とすると、特性方程式は</p>
+<p><span class="math display">\[
+  \lambda^2 - 2 \lambda -3 = 0
+\]</span></p>
+<p>である。したがって、<span class="math inline">\(\lambda = -1,3\)</span>を得る。対応する規格化された固有ベクトルは、それぞれ</p>
+<p><span class="math display">\[
+  \vec{e}_1 =
+  \frac{1}{\sqrt{2}}
+  \left(
+  \begin{array}{c}
+      1 \\ 1
+    \end{array}
+  \right)
+  ,
+  \vec{e}_2 =
+  \frac{1}{\sqrt{2}}
+  \left(
+  \begin{array}{c}
+      1 \\ -1
+    \end{array}
+  \right)
+\]</span></p>
+<p>である。この二つが直交していることは、内積が<span class="math inline">\(0\)</span>であることから明らかである。したがって、この二つのベクトルは正規直交基底である。</p>
+<h3 id="section-1">10. (2)</h3>
+<p><span class="math inline">\(\lambda_1 = -1\)</span>、<span class="math inline">\(\lambda_2 = 3\)</span>とし、 対応する固有ベクトルをそれぞれ<span class="math inline">\(\vec{e}_1\)</span>、<span class="math inline">\(\vec{e}_2\)</span>としよう。あるベクトル<span class="math inline">\(\vec{a}\)</span>が</p>
+<p><span class="math display">\[
+  \vec{a} = c_1 \vec{e}_1 +c_2 \vec{e}_2
+\]</span></p>
+<p>と展開できたとすると、<span class="math inline">\(\vec{e}_i\)</span>の正規直交性から、</p>
+<p><span class="math display">\[
+  c_i = \vec{e}_i \cdot \vec{a}
+\]</span></p>
+<p>であるから、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  c_1 &amp;= \frac{7}{\sqrt{2}}\\
+  c_2 &amp;= -\frac{1}{\sqrt{2}}
+\end{aligned}
+\]</span></p>
+<p>と求まる。</p>
+<h3 id="section-2">11. (1)</h3>
+<p><span class="math inline">\(V(x)=0\)</span>であるから、単に微分方程式</p>
+<p><span class="math display">\[
+  -\frac{\hbar^2}{2m} \frac{\mathrm{d}^2}{\mathrm{d} x^2} \psi = E \psi
+\]</span></p>
+<p>を解けばよい。<span class="math inline">\(\alpha = \sqrt{2mE}/\hbar\)</span>とすれば、</p>
+<p><span class="math display">\[
+  \psi(x) = A \mathrm{e}^{i \alpha x} + B \mathrm{e}^{- i \alpha x}
+\]</span></p>
+<p>が一般解である。<span class="math inline">\(C_1 = A+B\)</span>,<span class="math inline">\(C_2 = i(A-B)\)</span>と置きなおすと、</p>
+<p><span class="math display">\[
+  \psi(x) = C_1 \cos{\alpha x} + C_2 \sin{\alpha x}
+\]</span></p>
+<h3 id="section-3">11. (2)</h3>
+<p>「<span class="math inline">\(-L/2&lt; x &lt; L/2\)</span>の範囲で自由に運動する」とは、 <span class="math inline">\(-L/2&lt; x &lt; L/2\)</span>の範囲では<span class="math inline">\(V(x)=0\)</span>であり、 両端において<span class="math inline">\(\psi(-L/2) = \psi(L/2) = 0\)</span>ということである。 この条件から前問の<span class="math inline">\(C_1\)</span>、<span class="math inline">\(C_2\)</span>、<span class="math inline">\(E\)</span>を決めればよい。</p>
+<p><span class="math inline">\(\psi(L/2) = 0\)</span>より、</p>
+<p><span class="math display">\[
+  C_1 \cos{(\alpha L/2)} + C_2 \sin{(\alpha L/2)} = 0
+\]</span></p>
+<p><span class="math inline">\(\psi(-L/2) = 0\)</span>より、</p>
+<p><span class="math display">\[
+  C_1 \cos{(-\alpha L/2)} + C_2 \sin{(-\alpha L/2)} = 0
+\]</span></p>
+<p><span class="math inline">\(\cos(-\theta) = \cos \theta\)</span>、<span class="math inline">\(\sin(-\theta) = -\sin \theta\)</span>に注意して、先ほどの二式の和と差を取ると、</p>
+<p><span class="math display">\[
+  \left\{
+  \begin{array}{c}
+    C_1 \cos{(\alpha L/2)} = 0 \\
+    C_2 \sin{(\alpha L/2)} = 0
+  \end{array}
+  \right.
+\]</span></p>
+<p><span class="math inline">\(C_1\)</span>と<span class="math inline">\(C_2\)</span>が同時に<span class="math inline">\(0\)</span>となる解には興味が無いので、 <span class="math inline">\(\cos{\alpha L/2} = 0\)</span> かつ <span class="math inline">\(C_2=0\)</span>、もしくは<span class="math inline">\(\sin{\alpha L/2} = 0\)</span> かつ <span class="math inline">\(C_1=0\)</span> である。 したがって、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \frac{L \alpha }{2} &amp;= \frac{n\pi}{2} \qquad (n = 1,2,\cdots)\\
+  \frac{L \sqrt{2mE}}{2\hbar} &amp;= \frac{n\pi}{2} \\
+  E &amp;= \frac{n^2 \hbar^2 \pi^2}{2mL^2}
+\end{aligned}
+\]</span></p>
+<p>すなわち、エネルギーは離散的な値をとる。 さて、規格化条件から<span class="math inline">\((\psi,\psi) = 1\)</span>でなくてはならない。したがって、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (\psi,\psi) &amp;= \int_{-L/2}^{L/2} \!\! \mathrm{d} x \psi^2(x) \\
+  &amp;=  C^2 \int_{-L/2}^{L/2} \!\! \mathrm{d} x \cos^2{\alpha x} \\
+  &amp;= C^2 \int_{-L/2}^{L/2} \!\! \mathrm{d} x \frac{1+\cos 2\alpha x}{2} \\
+  &amp;= C^2 \left[ \frac{x}{2} +  \frac{\sin 2 \alpha x}{4 \alpha} \right]_{-L/2}^{L/2} \\
+  &amp;= \frac{C^2 L}{2} \\
+  &amp;= 1
+\end{aligned}
+\]</span></p>
+<p>したがって、<span class="math inline">\(C = \sqrt{2/L}\)</span>である。<span class="math inline">\(\sin\)</span>の場合も半角公式の符号が逆になるだけで同様である。</p>
+<p>以上をまとめると、</p>
+<p><span class="math display">\[
+  E = \frac{n^2 \hbar^2 \pi^2}{2mL^2} \quad , \quad
+  \psi(x) =
+  \left\{
+  \begin{array}{cc}
+    \sqrt{\frac{2}{L}} \cos (\alpha x) &amp; \quad n = 1,3,5,\cdots \\
+    \sqrt{\frac{2}{L}} \sin (\alpha x) &amp; \quad n = 2,4,6,\cdots
+  \end{array}
+  \right.
+\]</span></p>
+<p>ただし、<span class="math inline">\(\alpha \equiv \sqrt{2mE}/\hbar\)</span>である。</p>
+<h3 id="section-4">11. (3)</h3>
+<p>前問より、波動関数は自然数<span class="math inline">\(n\)</span>により区別される。エネルギー順位を下から数えて<span class="math inline">\(n\)</span>番目の波動関数を<span class="math inline">\(\psi_n\)</span>と表そう。異なるエネルギー固有値に対応する波動関数が直交するとは、</p>
+<p><span class="math display">\[
+  (\psi_i,\psi_j) = \delta_{ij}
+\]</span></p>
+<p>が成り立つことであり、これを示せばよい。</p>
+<p>まず、<span class="math inline">\(n\)</span>が奇数の時には<span class="math inline">\(\psi(x)\)</span>は偶関数、<span class="math inline">\(n\)</span>が偶数の時には奇関数となるから、<span class="math inline">\(n\)</span>の偶奇が異なる波動関数の内積は<span class="math inline">\(0\)</span>である(偶関数と奇関数を掛け算すると奇関数となり、奇関数は原点に対して対称な範囲で積分すると<span class="math inline">\(0\)</span>となるから)。そこで、<span class="math inline">\(n\)</span>が両方偶数、奇数の場合を考えればよい。</p>
+<p>まず、<span class="math inline">\(n\)</span>が両方奇数の場合、波動関数は</p>
+<p><span class="math display">\[
+  \psi_n = \sqrt{\frac{2}{L}} \cos \alpha_n x
+\]</span></p>
+<p>とかける(<span class="math inline">\(\alpha_n = n \pi/L\)</span>)。まず、<span class="math inline">\(i \neq j\)</span>の時には、三角関数の和積の公式から、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (\psi_i,\psi_j)&amp;= \frac{2}{L} \int_{-L/2}^{L/2} \!\!\! \mathrm{d} x  \cos{(\alpha_i x)}  \cos{(\alpha_j x)}  \\
+  &amp;= \frac{1}{L} \int_{-L/2}^{L/2} \!\!\! \mathrm{d} x \left( \cos{((\alpha_i+\alpha_j) x)}  + \cos{((\alpha_i-\alpha_j) x)} \right)\\
+  &amp;= 0
+\end{aligned}
+\]</span></p>
+<p>次に、<span class="math inline">\(i = j\)</span>の時には、三角関数の半角の公式から、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (\psi_i,\psi_i)&amp;= \frac{2}{L} \int_{-L/2}^{L/2} \!\!\! \mathrm{d} x  \cos^2{(\alpha_i x)}  \\
+  &amp;= \frac{1}{L} \int_{-L/2}^{L/2} \!\!\! \mathrm{d} x \left(
+  1 +  \cos{(2\alpha_i x)}
+  \right) \\
+  &amp;= 1
+\end{aligned}
+\]</span></p>
+<p><span class="math inline">\(n\)</span>が両方偶数の場合も同様である。以上から、<span class="math inline">\((\psi_i,\psi_j) = \delta_{ij}\)</span>が示された。</p>
+<h3 id="section-5">12. (1)</h3>
+<p>微分方程式をあらわに書けば、</p>
+<p><span class="math display">\[
+  -\frac{\hbar^2}{2m} \frac{\mathrm{d}^2}{\mathrm{d} x^2} \psi  + \frac{m \omega^2 x^2}{2} \psi = E \psi
+\]</span></p>
+<p>となる。計算を始める前に、<span class="math inline">\(a\)</span>と<span class="math inline">\(E\)</span>は<span class="math inline">\(\psi\)</span>が解である条件から、<span class="math inline">\(N_0\)</span>は規格化条件から求まるということに気がついておきたい。</p>
+<p><span class="math display">\[
+  \frac{\mathrm{d}^2}{\mathrm{d} x^2} \psi_0 = (a^4x^2-a^2) \psi_0
+\]</span></p>
+<p>であるから、これを微分方程式に代入すると、</p>
+<p><span class="math display">\[
+  -\frac{\hbar^2}{2m} (a^4 x^2 -a^2)  + \frac{m \omega^2 x^2}{2} - E = 0
+\]</span></p>
+<p><span class="math inline">\(x\)</span>について整理すると、</p>
+<p><span class="math display">\[
+  \left( -\frac{\hbar^2 a^4}{2m}  + \frac{m \omega^2 }{2} \right)x^2 +
+  \left( \frac{\hbar^2a^2}{2m} -E \right) = 0
+\]</span></p>
+<p>を得る。これが<span class="math inline">\(x\)</span>に関して恒等式でなくてはならないから、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  a &amp;= \sqrt{\frac{m\omega}{\hbar}} \\
+  E &amp;= \frac{1}{2} \hbar \omega
+\end{aligned}
+\]</span></p>
+<p>と求まる。振幅<span class="math inline">\(N_0\)</span>は、規格化条件<span class="math inline">\((\psi,\psi)=1\)</span>、すなわち</p>
+<p><span class="math display">\[
+  N_0^2 \int_{-\infty}^{\infty} \!\!\! \mathrm{d} x  \exp(-a^2 x^2) = 1
+\]</span></p>
+<p>より、</p>
+<p><span class="math display">\[
+  N_0 = \sqrt{\frac{a}{\sqrt{\pi}}}
+\]</span></p>
+<p>と求まる。</p>
+<h3 id="section-6">12. (2)</h3>
+<p><span class="math inline">\(ax \rightarrow \xi\)</span>という変数変換を施すと、 <span class="math inline">\(\displaystyle \frac{\mathrm{d}}{\mathrm{d} x} = a \displaystyle\frac{\mathrm{d}}{\mathrm{d} \xi}\)</span>であるから、元の微分方程式は、</p>
+<p><span class="math display">\[
+  -\frac{\hbar^2 a^2}{2m} \frac{\mathrm{d}^2}{\mathrm{d} \xi^2} \psi +
+  \left(
+  \frac{m \omega^2}{2a^2} \xi^2 -E
+  \right) \psi = 0
+\]</span></p>
+<p>となる。ここで、<span class="math inline">\(a^2 = m\omega/\hbar\)</span>であることから代入して整理すると、</p>
+<p><span class="math display">\[
+  - \psi&#39;&#39; + (\xi^2 - \frac{2E}{\hbar \omega})\psi = 0
+\]</span></p>
+<p>となる。この変数変換が無次元化に対応することに注意したい。<span class="math inline">\(a\)</span>が距離の逆数の次元を持っている。したがって、<span class="math inline">\(ax\)</span>は無次元量である。一般に物理で出てくる微分方程式は無次元化すると式が簡単になる。</p>
+<p><span class="math display">\[
+  \psi(\xi) = N_n H_n(\xi) \exp(-\xi^2/2)
+\]</span></p>
+<p>であるから、</p>
+<p><span class="math display">\[
+  \psi&#39;&#39; = N_n( H_n&#39;&#39; - 2\xi H_n&#39; + (\xi^2-1) H_n) \exp(-\xi^2/2)
+\]</span></p>
+<p>となる。これを代入すれば、</p>
+<p><span class="math display">\[
+  H_n&#39;&#39; - 2 \xi H_n +(\lambda -1)H_n = 0
+\]</span></p>
+<p>となる(ただし<span class="math inline">\(\lambda \equiv 2E/\hbar \omega\)</span>)。 これが<span class="math inline">\(H_n\)</span>が満たすべき微分方程式である。</p>
+<h3 id="section-7">12. (3)</h3>
+<p><span class="math inline">\(\psi_0\)</span>,<span class="math inline">\(\psi_2\)</span>は偶関数、<span class="math inline">\(\psi_1\)</span>は奇関数であるから、<span class="math inline">\((\psi_0,\psi_1)=0\)</span>,<span class="math inline">\((\psi_1,\psi_2)=0\)</span>はすぐに分かる。したがって非自明なのは<span class="math inline">\((\psi_0,\psi_2)\)</span>の計算である。規格化定数を無視すると、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (\psi_0,\psi_2) &amp;= \int_{-\infty}^{\infty}\!\!\! \mathrm{d} x (4x^2-2) \mathrm{e}^{-x^2} \\
+  &amp;= \int_{-\infty}^{\infty}\!\!\! \mathrm{d} x  \left(
+  -2x (\mathrm{e}^{-x^2})&#39; - 2 \mathrm{e}^{-x^2} \right) \\
+  &amp;= \int_{-\infty}^{\infty}\!\!\! \mathrm{d} x  \left( 2\mathrm{e}^{-x^2} - 2 \mathrm{e}^{-x^2} \right)\\
+  &amp;= 0
+\end{aligned}
+\]</span></p>
+<p>ただし、途中で部分積分を行い、<span class="math inline">\(x=\pm \infty\)</span>において<span class="math inline">\(x \mathrm{e}^{-x^2} = 0\)</span>を用いた。同様な計算で、<span class="math inline">\((\psi_n,\psi_n) = 1\)</span>も分かるが、計算は省略する。</p>
+<h2 id="解説">解説</h2>
+<h3 id="線形代数と固有値問題">線形代数と固有値問題</h3>
+<p>線形偏微分方程式が、変数分離により常微分方程式に、さらに固有値問題に落ちることを見てきた。そこで線形代数の固有値問題を復習しておこう。行列<span class="math inline">\(A\)</span>とベクトル<span class="math inline">\(\vec{x}\)</span>について、<span class="math inline">\(A \vec{x} = \lambda \vec{x}\)</span>が成り立つとき、<span class="math inline">\(\vec{x}\)</span>を<span class="math inline">\(A\)</span>の固有ベクトル、<span class="math inline">\(\lambda\)</span>を固有値と呼ぶ。<span class="math inline">\(A \vec{x} = \lambda \vec{x}\)</span>であることから、</p>
+<p><span class="math display">\[
+  (A - \lambda I) \vec{x} = 0
+\]</span></p>
+<p>である(ただし<span class="math inline">\(I\)</span>は単位行列)。<span class="math inline">\(\vec{x} \ne 0\)</span>のベクトルが存在するためには行列<span class="math inline">\(B = A - \lambda I\)</span>の逆行列が存在してはいけない。したがって、<span class="math inline">\(B\)</span>の行列式が<span class="math inline">\(0\)</span>でなくてはならないことから固有値<span class="math inline">\(\lambda\)</span>の満たすべき方程式は</p>
+<p><span class="math display">\[
+  |A - \lambda I|=0
+\]</span></p>
+<p>である。ただし<span class="math inline">\(|\cdots|\)</span>は行列式を表す。この方程式を固有方程式、もしくは微分方程式の場合と同様に <strong>特性方程式 (characteristic equation)</strong> と呼ぶ。</p>
+<p>また、行列のうち、<span class="math inline">\(A=A^*\)</span>を満たすものをエルミート行列と呼ぶ。<span class="math inline">\(A\)</span>の要素がすべて実数である場合、エルミート行列は実対称行列となる。エルミート行列の固有値は必ず実数である。また、相異なる固有値に属する固有ベクトル同士は直交している。物理で出てくる演算子を行列表示するとエルミート行列であることがほとんどなので、この事実は非常に重要である。</p>
+<h3 id="固有ベクトルによる展開">固有ベクトルによる展開</h3>
+<p>何か適当な空間を考える。たとえば3次元空間を考えよう。このとき、次の3つのベクトル</p>
+<p><span class="math display">\[
+  \vec{e}_1 =
+  \left(
+  \begin{array}{c}
+      1 \\ 0 \\ 0
+    \end{array}
+  \right)
+  \quad
+  \vec{e}_2 =
+  \left(
+  \begin{array}{c}
+      0 \\ 1 \\ 0
+    \end{array}
+  \right)
+  \quad
+  \vec{e}_3 =
+  \left(
+  \begin{array}{c}
+      0 \\ 0 \\ 1
+    \end{array}
+  \right)
+\]</span></p>
+<p>は、これらの線形結合で3次元空間のすべてのベクトルを表現できる。このとき、このベクトルは「3次元空間を張る」と表現し、このベクトルを <strong>基底 (basis)</strong> と呼ぶ。基底の取り方は一意では無いが、独立な基底の数は決まっている(この場合は3)。基底がお互いに直交している時、特に <strong>直交基底 (orthogonal basis)</strong> 、さらに自分自身との内積(絶対値)が<span class="math inline">\(1\)</span>であるように選ばれた基底を基底を <strong>正規直行基底 (orthonormal basis)</strong> と呼ぶ。</p>
+<p><span class="math inline">\(n\)</span>次元エルミート行列<span class="math inline">\(A\)</span>の規格化された固有ベクトルを<span class="math inline">\(\vec{e}_i (i=1,2,\cdots,n)\)</span>とする。これらは正規直交基底となるから、任意の<span class="math inline">\(n\)</span>次元ベクトル<span class="math inline">\(\vec{x}\)</span>は</p>
+<p><span class="math display">\[
+  \vec{x} = c_1 \vec{e}_1 + c_2 \vec{e}_2 + \cdots + c_n \vec{e}_n
+\]</span></p>
+<p>と一意に分解することができる。両辺に左から<span class="math inline">\(\vec{e}_i\)</span>をかけよう。すると正規直交性から、</p>
+<p><span class="math display">\[
+  \vec{e}_i \cdot \vec{e}_j = \delta_{ij}
+\]</span></p>
+<p>であるから、</p>
+<p><span class="math display">\[
+  \vec{e}_i \cdot \vec{x} = c_i
+\]</span></p>
+<p>である。すなわち、任意のベクトル<span class="math inline">\(\vec{x}\)</span>を固有ベクトルで展開したとき、その展開係数は固有ベクトルと<span class="math inline">\(\vec{x}\)</span>との内積から求めることができる。</p>
+<p>なぜこのように固有ベクトルで展開するのか。それは<span class="math inline">\(A\)</span>と<span class="math inline">\(\vec{x}\)</span>との積を考える時に便利だからである。<span class="math inline">\(\vec{e}_i\)</span>を固有値<span class="math inline">\(\lambda_i\)</span>に対応する固有ベクトルとしよう。固有ベクトルの定義から、<span class="math inline">\(A\vec{e}_i = \lambda_i \vec{e}_i\)</span>であるから、</p>
+<p><span class="math display">\[
+  A \vec{x} = c_1 \lambda_1 \vec{e}_1 + c_2 \lambda_2 \vec{e}_2 + \cdots + c_n \lambda_n \vec{e}_n
+\]</span></p>
+<p>である。行列とベクトルの掛け算を、単に<span class="math inline">\(\lambda_i\)</span>というスカラー倍により計算できる。ここでは<span class="math inline">\(A\)</span>は行列であったが、一般には微分や積分でも良い。本来微分などの解析的な計算が、固有関数で展開しておけば固有値の掛け算という代数的な計算をするだけとなる。</p>
+<h3 id="固有関数">固有関数</h3>
+<p>今まで演算子として行列を、被演算子としてベクトルを考えてきたが、演算子として微分を、被演算子として関数を考えることもできる。演算子<span class="math inline">\(\mathcal{L}\)</span>に対して、<span class="math inline">\(\mathcal{L} \psi = \lambda \psi\)</span>が成り立つ場合、<span class="math inline">\(\psi\)</span>を<span class="math inline">\(\mathcal{L}\)</span>の固有関数、<span class="math inline">\(\lambda\)</span>を固有値と呼ぶ。<span class="math inline">\(\mathcal{L}\)</span>は微分演算子や代数式、その線形結合などなどである。特に物理においては、<span class="math inline">\(\mathcal{L}\)</span>としてエネルギーに対応する演算子を考えることが多く、この演算子を <strong>ハミルトニアン (Hamiltonian)</strong> と呼び、表記を<span class="math inline">\(\mathcal H\)</span>とする。この場合、固有値がエネルギーをあらわす。</p>
+<p><span class="math inline">\(\vec{x}\)</span>と<span class="math inline">\(\vec{y}\)</span>をそれぞれ<span class="math inline">\(n\)</span>次元のベクトルとすると、ベクトルの内積<span class="math inline">\((\vec{x},\vec{y})\)</span>は、</p>
+<p><span class="math display">\[
+  (\vec{x},\vec{y}) \equiv \vec{x} \cdot \vec{y} = \sum_i^n x_i y_i
+\]</span></p>
+<p>と定義される。ただし<span class="math inline">\(x_i\)</span>は<span class="math inline">\(\vec{x}\)</span>の第<span class="math inline">\(i\)</span>成分である。さらに、ベクトルの成分が複素数である場合には、</p>
+<p><span class="math display">\[
+  (\vec{x},\vec{y}) \equiv \bar{\vec{x}} \cdot \vec{y} = \sum_i^n \bar{x_i} y_i
+\]</span></p>
+<p>と定義する。ただし<span class="math inline">\(\bar{x_i}\)</span>は<span class="math inline">\(x_i\)</span>の複素共役である。</p>
+<p>さて、演算子に対する固有関数を考える限り、固有関数はベクトルのように扱うことができる。ある二つの固有関数を<span class="math inline">\(\psi(x),\phi(x)\)</span>としよう。値域は一般に複素数である。これらの定義域を<span class="math inline">\(a &lt; x &lt; b\)</span>とすると、<span class="math inline">\(\psi(x),\phi(x)\)</span>の内積<span class="math inline">\((\psi,\phi)\)</span>は、</p>
+<p><span class="math display">\[
+  (\psi,\phi) = \int_{a}^{b} \!\!\! \mathrm{d} x \psi^*(x) \phi(x)
+\]</span></p>
+<p>で定義される。ただし、<span class="math inline">\(\psi^*(x)\)</span>は<span class="math inline">\(\psi(x)\)</span>の複素共役である。これは、関数が無限次元のベクトルだと思えば理解できるであろう。</p>
+<h3 id="様々な基底">様々な基底</h3>
+<p>ベクトル空間において、基底となるベクトルの取り方はいろいろあった。たとえば2次元なら<span class="math inline">\((1,0),(0,1)\)</span>の二つにとっても良いし、<span class="math inline">\((1/\sqrt{2},1/\sqrt{2}),(1/\sqrt{2},-1/\sqrt{2})\)</span>としても良い。問題に応じて便利な基底を取ればよい。</p>
+<p>同様に、関数空間においても様々な基底の取り方がある。一番単純に、基底を<span class="math inline">\(1,x,x^2,x^3,\cdots\)</span>ととることを考えよう。これは<span class="math inline">\(x=0\)</span>周りのテイラー展開を行ったことに対応する。ただ、これらの基底は直交していないので使いづらいことが多い。他に良く出てくる基底としては、ルジャンドル多項式(Legendre Polynomial) <span class="math inline">\(P_n(x)\)</span>がある。<span class="math inline">\(P_n(x)\)</span>は<span class="math inline">\(n\)</span>次の多項式で、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  P_0(x) &amp;= 1\\
+  P_1(x) &amp;= x\\
+  P_2(x) &amp;= \frac{1}{2}(3x^2-1)
+\end{aligned}
+\]</span></p>
+<p>表される。これらの多項式は、<span class="math inline">\(-1 &lt; x &lt; 1\)</span>の範囲で直交基底をなすことが分かる。具体的には、</p>
+<p><span class="math display">\[
+  (P_n,P_m) = \int_{-1}^{1} \!\!\!\mathrm{d} x P_n(x) P_m(x)= \frac{2}{2n+1} \delta_{mn}
+\]</span></p>
+<p>が成り立つ(計算してみよ)。他によく出てくる基底が、問題に出てくるエルミート多項式(Hermite Polynomial)である。エルミートの多項式<span class="math inline">\(H_n(x)\)</span>は、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  H_0(x) &amp;= 1\\
+  H_1(x) &amp;= 2x\\
+  H_2(x) &amp;= 4x^2-2
+\end{aligned}
+\]</span></p>
+<p>である。これは<span class="math inline">\(H_n(x) \exp(-x^2/2)\)</span>が<span class="math inline">\(-\infty &lt; x &lt; \infty\)</span>の範囲で直交基底をなす。これらの多項式を陽に扱って計算をするのは大変であるが、それぞれがベクトルと同様に単なる基底だと思えば計算が非常に楽になる。</p>
+          </article>
+  </body>
+
+  </html>

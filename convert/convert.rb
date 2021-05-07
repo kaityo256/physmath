@@ -1,8 +1,9 @@
 while (line = gets)
   line.gsub!(/\\diff/, '\mathrm{d}')
   line.gsub!(/\\e\^/, '\mathrm{e}^')
-  line.gsub!(/&=&/, '&=')
+  line.gsub!(/&\s?=&/, '&=')
   line.gsub!(/\\cal/, '\mathcal')
+  line.gsub!(/{\\bf ([a-z])}/, '\bm{\1}')
   line.gsub!(/{\\bf\s(.*?)}/,' **\1** ')
   case line
   when /\\section\{(.*)\}/
@@ -16,6 +17,10 @@ while (line = gets)
   when /\\begin\{eqnarray\}/
     puts "\n$$\n\\begin{aligned}\n"
   when /\\end\{eqnarray\}/
+    puts "\\end{aligned}\n$$\n\n"
+  when /\\begin\{eqnarray\*\}/
+    puts "\n$$\n\\begin{aligned}\n"
+  when /\\end\{eqnarray\*\}/
     puts "\\end{aligned}\n$$\n\n"
   when /\\begin\{equation\}/
     puts "\n$$"
