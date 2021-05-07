@@ -2,6 +2,8 @@ while (line = gets)
   line.gsub!(/\\diff/, '\mathrm{d}')
   line.gsub!(/\\e\^/, '\mathrm{e}^')
   line.gsub!(/&=&/, '&=')
+  line.gsub!(/\\cal/, '\mathcal')
+  line.gsub!(/{\\bf\s(.*?)}/,' **\1** ')
   case line
   when /\\section\{(.*)\}/
     puts "# #{$1}"
@@ -12,7 +14,7 @@ while (line = gets)
   when /^\\ans\{(.*)\}\{(.*)\}/
     puts "### #{$1}. (#{$2})\n\n"
   when /\\begin\{eqnarray\}/
-    puts "\n$$\\begin{aligned}\n"
+    puts "\n$$\n\\begin{aligned}\n"
   when /\\end\{eqnarray\}/
     puts "\\end{aligned}\n$$\n\n"
   when /\\begin\{equation\}/
@@ -22,6 +24,10 @@ while (line = gets)
   when /\$\$(.*)\$\$$/
     puts "$$\n#{$1}\n$$\n\n"
   when /^%/
+    # nop
+  when /\\yodan/
+    # nop
+  when /^\}$/
     # nop
   when /\\newpage/
     break
