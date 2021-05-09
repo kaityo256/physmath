@@ -5,6 +5,7 @@ while (line = gets)
   line.gsub!(/\\cal/, '\mathcal')
   line.gsub!(/{\\bf ([a-z])}/, '\bm{\1}')
   line.gsub!(/{\\bf\s(.*?)}/,' **\1** ')
+  line.gsub!(/%$/,'')
   case line
   when /\\section\{(.*)\}/
     puts "# #{$1}"

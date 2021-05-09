@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title></title>
+    <style type="text/css">
+      p {
+        padding-left: 1em;
+      }
+
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      p.caption {
+        display: none;
+      }
+
+      img {
+        width: 100%
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://kaityo256.github.io/python_zero/github-markdown.css" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+        <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="第四回-フーリエ級数展開と超関数">第四回 フーリエ級数展開と超関数</h1>
+<h2 id="目的">目的</h2>
+<p>フーリエ級数展開が、直交基底による展開の特別な場合になっていることを理解する。 また、超関数が内積によって定義されることを学ぶ。</p>
+<h2 id="解答">解答</h2>
+<h3 id="section">13. (1)</h3>
+<p>絶対値がついているので<span class="math inline">\(x=0\)</span>で微分不連続だが、それでもすぐに偶関数だから<span class="math inline">\(\cos\)</span>の成分しか出てこないということに気が付いて欲しい。したがって<span class="math inline">\(b_n = 0\)</span>である。</p>
+<p>さて、</p>
+<p><span class="math display">\[
+  a_n = \frac{1}{ \pi} \int_{-\pi}^{\pi} \!\!\! \mathrm{d} x f(x) \sin nx
+\]</span></p>
+<p>であるから、</p>
+<p><span class="math display">\[
+  a_0 = \frac{2}{\pi} \int_0^{\pi} x \mathrm{d} x  = \pi
+\]</span></p>
+<p>ただし、<span class="math inline">\(f(x)\)</span>の偶関数性を用いた。<span class="math inline">\(n\neq 0\)</span>の場合は、部分積分を用いれば</p>
+<p><span class="math display">\[
+\begin{aligned}
+  a_n &amp;= \frac{2}{\pi} \int_0^{\pi} x \cos nx \mathrm{d} x \\
+  &amp;= \frac{2}{\pi} \int_0^{\pi} x (\frac{1}{n}\sin nx)&#39; \mathrm{d} x  \\
+  &amp;= \frac{2}{\pi} \left[ \frac{x}{n} \sin nx \right]_0^{\pi}
+  - \frac{2}{n\pi} \int_0^{\pi} \sin nx \\
+  &amp;= \frac{2}{n^2\pi} \left[\cos nx \right]_0^{\pi}\\
+  &amp;= \frac{2 ((-1)^n -1)}{n^2\pi}
+\end{aligned}
+\]</span></p>
+<p>以上から、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  f(x) &amp;= \frac{\pi}{2} + \frac{2}{\pi} \sum_{n=1}^\infty \frac{((-1)^n -1)}{n^2} \cos nx \\
+  &amp;=
+  \frac{\pi}{2} - \frac{4}{\pi} \sum_{m=0}^\infty \frac{\cos (2m+1)x}{(2m+1)^2} \\
+\end{aligned}
+\]</span></p>
+<p><span class="math inline">\(x=0\)</span>を代入すると、右辺、左辺共に<span class="math inline">\(0\)</span>となり、一致する。</p>
+<h3 id="section-1">13. (2)</h3>
+<p>前問と同様に奇関数であるから、<span class="math inline">\(\sin\)</span>の成分しか出てこない。したがって<span class="math inline">\(a_n=0\)</span>である。</p>
+<p><span class="math display">\[
+\begin{aligned}
+  b_n &amp;= \frac{2}{\pi} \int_0^{\pi} \mathrm{d} x  \sin nx\\
+  &amp;= \frac{2}{\pi}  \left[ \frac{- \cos nx}{n}  \right]_0^\pi\\
+  &amp;= \frac{2}{\pi} \frac{1 - (-1)^n}{n}
+\end{aligned}
+\]</span></p>
+<p>以上から、</p>
+<p><span class="math display">\[
+  f(x) = \frac{2}{\pi} \sum_{n=1}^{\infty} \frac{1 - (-1)^n}{n} \sin nx
+\]</span></p>
+<p>さて、定義から<span class="math inline">\(f(0) = 1\)</span>であるが、右辺の級数に<span class="math inline">\(x=0\)</span>を代入すると<span class="math inline">\(0\)</span>になってしまい、一致しない。一般に、<span class="math inline">\(f(x)\)</span>がある点<span class="math inline">\(x_0\)</span>で不連続である場合には、フーリエ級数は</p>
+<p><span class="math display">\[
+  \lim_{\varepsilon \rightarrow 0} \frac{f(x_0 + |\varepsilon|) + f(x_0 - |\varepsilon|) }{2}
+\]</span></p>
+<p>すなわち、その不連続点における上側からの極限値と下側からの極限値の平均値となる。したがって、フーリエ級数展開、</p>
+<p><span class="math display">\[
+  f(x) = \frac{a_0}{2} + \sum_{n=1}^\infty (a_n \cos nx + b_n \sin nx)
+\]</span></p>
+<p>は、厳密には不連続点で等号が成立しない。</p>
+<h3 id="section-2">14. (1)</h3>
+<p>複素フーリエ級数の和を、<span class="math inline">\(n=0\)</span>と<span class="math inline">\(n\le -1\)</span>、<span class="math inline">\(n \ge 1\)</span>に分けることを考える。</p>
+<p><span class="math display">\[
+\begin{aligned}
+  f(x) &amp;= \sum_{n=-\infty}^{\infty} c_n \exp{(inx)}\\
+  &amp;= \sum_{n=-\infty}^{\infty} c_n (\cos nx + i \sin nx)\\
+  &amp;= c_0 + \sum_{n=1}^{\infty} c_n (\cos nx + i \sin nx)
+  + \sum_{n=-1}^{-\infty} c_n (\cos nx + i \sin nx)\\
+  &amp;= c_0 + \sum_{n=1}^{\infty} c_n (\cos nx + i \sin nx)
+  + \sum_{n=1}^{\infty} c_{-n} (\cos nx - i \sin nx)\\
+  &amp;= c_0 + \sum_{n=1}^{\infty} \left( (c_n+c_{-n}) \cos nx + i(c_n-c_{-n}) \sin nx  \right)
+\end{aligned}
+\]</span></p>
+<p>一方、フーリエ級数展開は、</p>
+<p><span class="math display">\[
+  f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos nx + b_n \sin nx  \right)
+\]</span></p>
+<p>であるから、係数を比較して、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  a_0 &amp;= 2 c_0 \\
+  a_n &amp;= c_n + c_{-n} \\
+  b_n &amp;= c_n - c_{-n}
+\end{aligned}
+\]</span></p>
+<p>より、<span class="math inline">\(c_n\)</span>、<span class="math inline">\(c_{-n}\)</span>について逆に解けば良い。</p>
+<h3 id="section-3">14. (2)</h3>
+<p><span class="math display">\[
+\begin{aligned}
+  c_n &amp;= \frac{1}{2\pi} \int_{-\pi}^{\pi} \mathrm{d} x \mathrm{e}^x \mathrm{e}^{-inx} \\
+  &amp;= \frac{1}{2\pi} \int_{-\pi}^{\pi} \mathrm{d} x \mathrm{e}^{(1-in)x} \\
+  &amp;= \frac{1}{2\pi} \left[ \frac{\mathrm{e}^{(1-in)x}}{1-in}  \right]_{-\pi}^{\pi}\\
+  &amp;= \frac{1}{2\pi} \left( \frac{\mathrm{e}^{(1-in)\pi} - \mathrm{e}^{(1-in)(-\pi) }}{1-in}  \right)\\
+  &amp;= \frac{1}{2\pi} \left( \frac{ \mathrm{e}^\pi \mathrm{e}^{-in\pi} - \mathrm{e}^{-\pi} \mathrm{e}^{in\pi} }{1-in}  \right)\\
+  &amp;= \frac{(-1)^n}{2\pi} \left( \frac{\mathrm{e}^{\pi} - \mathrm{e}^{-\pi} }{1-in}  \right)\\
+  &amp;= \frac{(-1)^n}{\pi} \frac{\sinh \pi }{1-in}
+\end{aligned}
+\]</span></p>
+<p>以上から、</p>
+<p><span class="math display">\[
+  f(x) = \sum_{n=-\infty}^{\infty} \frac{(-1)^n}{\pi} \frac{\sinh \pi }{1-in} \mathrm{e}^{inx}
+\]</span></p>
+<p>さて、<span class="math inline">\(x=0\)</span>を代入すると、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  f(0) &amp;= \sum_{n=-\infty}^{\infty} \frac{(-1)^n}{\pi} \frac{\sinh \pi }{1-in} \mathrm{e}^{inx}\\
+  &amp;= \sum_{n=-\infty}^{\infty} \frac{(-1)^n}{\pi} \frac{(1+in) \sinh \pi }{1+n^2}\\
+  &amp;= \frac{\sinh \pi}{\pi}\left( 1+  \sum_{n=1}^{\infty}\frac{(-1)^n(1+in)}{1+n^2}+\frac{(-1)^{-n}(1-in)}{1+n^2}  \right)\\
+  &amp;= \frac{\sinh \pi}{\pi}\left( 1+  2 \sum_{n=1}^{\infty} \frac{(-1)^n}{1+n^2} \right)
+\end{aligned}
+\]</span></p>
+<p>さて、もともと<span class="math inline">\(f(x)=\mathrm{e}^x\)</span>であったから、<span class="math inline">\(f(0)=1\)</span>である。 以上から、</p>
+<p><span class="math display">\[
+  \sum_{n=1}^{\infty} \frac{(-1)^n}{1+n^2} = \frac{1}{2} \left( \frac{\pi}{\sinh \pi} -1 \right)
+\]</span></p>
+<h3 id="section-4">15. (1)</h3>
+<p>よくやる間違いは、<span class="math inline">\(x = 0\)</span>なら<span class="math inline">\(x \delta(x) = 0\)</span>、<span class="math inline">\(x \neq 0\)</span>なら<span class="math inline">\(\delta(x) = 0\)</span>だから<span class="math inline">\(x \delta(x) = 0\)</span>、以上で証明終わり、とするものであるが、デルタ関数は内積でしか定義できないので、等価性を示す場合も内積の形で示す必要がある。</p>
+<p>すなわち、内積ができる量<span class="math inline">\(A\)</span>、<span class="math inline">\(B\)</span>、<span class="math inline">\(C\)</span>があったとき、任意の<span class="math inline">\(C\)</span>について</p>
+<p><span class="math display">\[
+  (A, C) = (B, C)
+\]</span></p>
+<p>である場合に、内積の一意性から<span class="math inline">\(A=B\)</span>を言うことができる。この方針で<span class="math inline">\(x \delta(x)\)</span>と<span class="math inline">\(f(x)\)</span>の内積を計算してみよう。</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (x \delta(x), f(x) ) &amp;= \int_{-\infty}^\infty \!\!\! x \delta(x) f(x) \mathrm{d} x \\
+  &amp;= \int_{-\infty}^\infty \!\!\! \delta(x) g(x) \mathrm{d} x \\
+  &amp;= g(0) \\
+  &amp;= 0 \\
+  &amp;= (0, f(x))
+\end{aligned}
+\]</span></p>
+<p>ただし途中で<span class="math inline">\(g(x) \equiv x f(x)\)</span>とおいた。 以上から<span class="math inline">\(x \delta(x)\)</span>はどのような(性質の良い)関数と内積をとっても<span class="math inline">\(0\)</span>となる、すなわち、</p>
+<p><span class="math display">\[
+  (x \delta(x), f(x)) = (0, f(x))
+\]</span></p>
+<p>であるから、<span class="math inline">\(x \delta(x) = 0\)</span>と言う事ができる。</p>
+<p><span class="math inline">\(\delta(ax) = \delta(x)/|a|\)</span>の証明は以下の通り。 $a &gt; 0 $のとき、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (\delta(ax),f(x)) &amp;= \int_{-\infty}^\infty \!\!\! \delta(ax) f(x) \mathrm{d} x \\
+  &amp;= \int_{-\infty}^\infty \!\!\! \delta(x) f(x/a) a \mathrm{d} x\\
+  &amp;= a f(0) \\
+  &amp;= a \int_{-\infty}^\infty \!\!\! \delta(x) f(x) \mathrm{d} x\\
+  &amp;= (a \delta(x), f(x))
+\end{aligned}
+\]</span></p>
+<p>以上で、<span class="math inline">\(a\delta(x) = \delta(ax)\)</span>が証明された。<span class="math inline">\(a&lt;0\)</span>の場合は、積分区間が逆になることから負符号が出て、あわせて<span class="math inline">\(\delta(ax) = \delta(x)/|a|\)</span>が結論される。</p>
+<h3 id="section-5">15. (2)</h3>
+<p><span class="math display">\[
+\begin{aligned}
+  \left(  \frac{\mathrm{d} \theta(x)}{\mathrm{d} x} ,f(x) \right)
+  &amp;= \int_{-\infty}^\infty \!\!\! \mathrm{d} x \frac{\mathrm{d} \theta(x)}{\mathrm{d} x} f(x) \\
+  &amp;=
+  \left[
+    \theta(x) f(x)
+    \right]_{-\infty}^{\infty}
+  - \int_{-\infty}^\infty \!\!\! \mathrm{d} x \theta(x) f&#39;(x)\\
+  &amp;= - \int_{0}^\infty \!\!\! \mathrm{d} xf&#39;(x)\\
+  &amp;= - f(\infty) + f(0)\\
+  &amp;= \int_{-\infty}^\infty \!\!\! \mathrm{d} x \delta(x) f(x)\\
+  &amp;= (\delta(x), f(x))
+\end{aligned}
+\]</span></p>
+<p>以上から、</p>
+<p><span class="math display">\[
+  \frac{\mathrm{d} \theta(x)}{\mathrm{d} x} = \delta(x)
+\]</span> が証明された。</p>
+<h3 id="section-6">15. (3)</h3>
+<p>デルタ関数の定義から、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  c_n &amp;= \frac{1}{2\pi} \int_{-\pi}^{\pi} \!\!\! \mathrm{d} x \delta(x) \mathrm{e}^{-inx} \\
+  &amp;= \frac{1}{2\pi}
+\end{aligned}
+\]</span></p>
+<p>以上より形式的に、</p>
+<p><span class="math display">\[
+  \delta(x) = \frac{1}{2\pi} \sum_{n=-\infty}^{\infty} \mathrm{e}^{inx}
+\]</span></p>
+<p>である。これはデルタ関数の級数表示である。デルタ関数にはいくつもの表示方法があるが、 それぞれ等価であるから計算に対して便利なものを場合に応じて使い分ければよい。</p>
+<h2 id="解説">解説</h2>
+<h3 id="フーリエ級数展開">フーリエ級数展開</h3>
+<p><span class="math inline">\((-\pi \le x &lt; \pi)\)</span>で定義されている関数<span class="math inline">\(f(x)\)</span>を、 <span class="math display">\[
+  f(x) = \frac{a_0}{2} + \sum_{n=1}^\infty (a_n \cos nx + b_n \sin nx)
+\]</span> の形に展開することをフーリエ級数展開という。 また、<span class="math inline">\(a_n, b_n\)</span>をフーリエ係数と呼ぶ。</p>
+<p>三角関数の直交性、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \int_{-\pi}^{\pi} \!\!\! \mathrm{d} x \cos nx \cos mx &amp;= \pi \delta_{nm}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+  \int_{-\pi}^{\pi} \!\!\! \mathrm{d} x \sin nx \sin mx &amp;= \pi \delta_{nm}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+  \int_{-\pi}^{\pi} \!\!\! \mathrm{d} x \sin nx \cos mx &amp;= 0
+\end{aligned}
+\]</span></p>
+<p>より、フーリエ係数は</p>
+<p><span class="math display">\[
+\begin{aligned}
+  a_n = \frac{1}{ \pi} \int_{-\pi}^{\pi} \!\!\! \mathrm{d} x \cos nx f(x)
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+  b_n = \frac{1}{ \pi} \int_{-\pi}^{\pi} \!\!\! \mathrm{d} x \sin nx f(x)
+\end{aligned}
+\]</span></p>
+<p>で求めることができる。たまにフーリエ級数展開の定義を</p>
+<p><span class="math display">\[
+  f(x) = \frac{a_0}{2\sqrt{\pi}} + \frac{1}{\sqrt{\pi}}\sum_{n=1}^\infty (a_n \cos nx + b_n \sin nx)
+\]</span></p>
+<p>として、フーリエ係数を</p>
+<p><span class="math display">\[
+\begin{aligned}
+  a_n = \frac{1}{ \sqrt{\pi}} \int_{-\pi}^{\pi} \!\!\! \mathrm{d} x \cos nx f(x)
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+  b_n = \frac{1}{\sqrt{\pi}} \int_{-\pi}^{\pi} \!\!\! \mathrm{d} x \sin nx f(x)
+\end{aligned}
+\]</span></p>
+<p>とする教科書もあるが、これは<span class="math inline">\(\frac{1}{\sqrt{\pi}} \sin nx\)</span>、<span class="math inline">\(\frac{1}{\sqrt{\pi}} \cos nx\)</span>が正規直交基底になるためであり、 実用上は前者がよく使われる。</p>
+<h3 id="複素フーリエ級数展開">複素フーリエ級数展開</h3>
+<p>オイラーの関係式</p>
+<p><span class="math display">\[
+  \mathrm{e}^{i\theta} = \cos \theta + i \sin \theta
+\]</span></p>
+<p>を使えば、フーリエ級数展開の<span class="math inline">\(\cos\)</span>と<span class="math inline">\(\sin\)</span>を同時に扱うことができる。 すなわち、<span class="math inline">\((-\pi \le x &lt; \pi)\)</span>で定義されている関数<span class="math inline">\(f(x)\)</span>を、</p>
+<p><span class="math display">\[
+  f(x) = \sum_{-\infty}^{\infty} c_n \exp{(inx)}
+\]</span></p>
+<p>という形に展開する。</p>
+<p>ここで、係数<span class="math inline">\(c_n\)</span>は複素数であり、フーリエ級数における係数 <span class="math inline">\(a_n\)</span>および<span class="math inline">\(b_n\)</span>との関係は次の通りである。</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \left\{
+  \begin{array}{ccc}
+    c_0    &amp; = &amp; \displaystyle\frac{a_0}{2}         \\
+    c_n    &amp; = &amp; \displaystyle\frac{a_n - i b_n}{2} \\
+    c_{-n} &amp; = &amp; \displaystyle\frac{a_n + i b_n}{2}
+  \end{array}
+  \right.
+\end{aligned}
+\]</span></p>
+<p>複素フーリエ級数の直交性は次のように表される。</p>
+<p><span class="math display">\[
+  \int_{-\pi}^{\pi} \mathrm{d} x (\mathrm{e}^{imx})^* \mathrm{e}^{inx} =
+  \int_{-\pi}^{\pi} \mathrm{d} x \mathrm{e}^{i(n-m)x} = 2\pi \delta_{mn}
+\]</span></p>
+<p>ただし<span class="math inline">\(z*\)</span>は<span class="math inline">\(z\)</span>の複素共役をあらわす。この直交性を用いれば、</p>
+<p><span class="math display">\[
+  c_n = \frac{1}{2\pi} \int_{-\pi}^{\pi} \mathrm{d} x  f(x) (\mathrm{e}^{inx})^*
+  = \int_{-\pi}^{\pi} \mathrm{d} x  f(x) \mathrm{e}^{-inx}
+\]</span></p>
+<p>と係数を求めることができる。<span class="math inline">\(\mathrm{e}^{inx}\)</span>ではなく、<span class="math inline">\(\mathrm{e}^{-inx}\)</span>をかけて積分をすることに注意したい。</p>
+<p>以上のように、フーリエ級数展開と複素フーリエ級数展開は等価である。しかし、こうやって指数関数であらわしてしまったほうが三角関数を使うより計算は便利である。なぜなら三角関数は微分や積分で<span class="math inline">\(\sin\)</span>と<span class="math inline">\(\cos\)</span>が入れ替わるが、指数関数は指数関数のままで、肩に乗っている値を気にするだけでよいからだ。また、複素フーリエ級数展開は、後に扱うフーリエ変換につながる。</p>
+<h3 id="超関数">超関数</h3>
+<p>次の積分で定義される関数<span class="math inline">\(\delta(x)\)</span>を、ディラック(Dirac)のデルタ関数という。</p>
+<p><span class="math display">\[
+  \int_{-\infty}^{\infty} \!\!\! \mathrm{d} x \delta(x) f(x) =
+  \int_{-\varepsilon}^{\varepsilon} \!\!\! \mathrm{d} x \delta(x) f(x) =
+  f(0)
+\]</span></p>
+<p>ただし<span class="math inline">\(\varepsilon\)</span>は任意の正数であり、関数<span class="math inline">\(f(x)\)</span>は<span class="math inline">\(x = \pm \infty\)</span>で任意の<span class="math inline">\(x\)</span>のべき乗よりも早く<span class="math inline">\(0\)</span>に収束し、さらに何回でも微分できるとする(このような関数を「性質の良い関数」と呼ぶ)。</p>
+<p>この積分がデルタ関数と関数<span class="math inline">\(f(x)\)</span>の内積、<span class="math inline">\((\delta,f)\)</span>になっていることに注意したい。すなわち、 <strong>デルタ関数とは、内積をとって初めて定義される関数</strong> である。このような関数を <strong>超関数 (generalized function)</strong> と呼ぶ。超関数は通常の関数とは区別される。デルタ関数をはじめとする超関数の定義の仕方は一通りではなく、厳密な議論は面倒だが、とりあえずここでは「デルタ関数は関数の内積で定義される」とだけ覚えておき、後で必要になったら超関数論を学ぶと良い。</p>
+<p>デルタ関数が内積をとって初めて意味を持つように、微分などの演算子も、演算して初めて意味を持つことに注意したい。たとえば、<span class="math inline">\(\displaystyle \frac{\mathrm{d}}{\mathrm{d} x} x\)</span>という「演算子」を考える。これは演算子<span class="math inline">\(\displaystyle \frac{\mathrm{d}}{\mathrm{d} x}\)</span>と<span class="math inline">\(x\)</span>の積で作られている。演算子<span class="math inline">\(A\)</span>、<span class="math inline">\(B\)</span>の積 <span class="math inline">\(AB\)</span>は、「最初に<span class="math inline">\(B\)</span>を演算し、次に<span class="math inline">\(A\)</span>を演算する」という意味である。したがって、たとえば関数<span class="math inline">\(f(x)\)</span>に先ほどの演算子を演算すると、まず<span class="math inline">\(x\)</span>をかけて、次に<span class="math inline">\(x\)</span>で微分するのであるから、</p>
+<p><span class="math display">\[
+  \frac{\mathrm{d}}{\mathrm{d} x} (x f(x)) = f(x) + x \frac{\mathrm{d} f(x)}{\mathrm{d} x}
+\]</span></p>
+<p>となる。したがって、元の演算子<span class="math inline">\(\displaystyle \frac{\mathrm{d}}{\mathrm{d} x} x\)</span>と、演算の順序を入れかえた<span class="math inline">\(\displaystyle x \frac{\mathrm{d}}{\mathrm{d} x}\)</span>は一致しない。先ほどの結果から、</p>
+<p><span class="math display">\[
+  (\frac{\mathrm{d}}{\mathrm{d} x} x) f(x)  =  (1 + x \frac{\mathrm{d} }{\mathrm{d} x}) f(x)
+\]</span></p>
+<p>すなわち、演算子だけを見れば、</p>
+<p><span class="math display">\[
+  \frac{\mathrm{d}}{\mathrm{d} x} x -   x \frac{\mathrm{d} }{\mathrm{d} x} =  1
+\]</span></p>
+<p>という関係が成り立つ。このような関係を <strong>交換関係 (commutation relation)</strong> と呼び、代数学において重要な役割を果たす。一般に、演算子の積<span class="math inline">\(AB\)</span>と、順序を逆にした積<span class="math inline">\(BA\)</span>の差<span class="math inline">\(AB-BA\)</span>を<span class="math inline">\([A,B]\)</span>とあらわす。つまり</p>
+<p><span class="math display">\[
+  [A,B] = AB - BA
+\]</span></p>
+<p>である。もし<span class="math inline">\([A,B]=0\)</span>である場合、すなわち演算子の順序を入れ替えても結果が変わらない場合、「演算子<span class="math inline">\(A\)</span>と<span class="math inline">\(B\)</span>は交換する」と言う。このような交換関係は、量子力学の定式化などで威力を発揮する。<span class="math inline">\(A\)</span>や<span class="math inline">\(B\)</span>は、たとえば先ほどの例のように微分演算子でも良いし、行列でも良い(行列も一般には交換しない)。抽象的で理解しづらかったら具体例で考えるようにしたい。特に、「演算子は何かに演算して初めて意味を持つ」ということを思い出そう。このような抽象化が代数の難しさであると同時に、代数学の強みでもある。<span class="math inline">\(A\)</span>が微分であろうと積分であろうと行列であろうと、もっと他の演算子であろうと、交換関係という普遍的な代数構造を持つのである。</p>
+          </article>
+  </body>
+
+  </html>
