@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title></title>
+    <style type="text/css">
+      p {
+        padding-left: 1em;
+      }
+
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      p.caption {
+        display: none;
+      }
+
+      img {
+        width: 100%
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://kaityo256.github.io/python_zero/github-markdown.css" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+        <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="第六回-複素積分とローラン展開">第六回 複素積分とローラン展開</h1>
+<h2 id="目的">目的</h2>
+<p>複素関数の正則性および複素積分の基礎について学ぶ。 また、留数定理の準備として、ローラン展開について学ぶ。</p>
+<h2 id="解答">解答</h2>
+<h3 id="section">19. (1)</h3>
+<p><span class="math inline">\(z_0 = x_0 + i y_0\)</span>、<span class="math inline">\(x - x_0 = \Delta x\)</span>、<span class="math inline">\(y - y_0 = \Delta y\)</span>としよう。<span class="math inline">\(f(z)\)</span>の実部を<span class="math inline">\(u(x,y)\)</span>、虚部を<span class="math inline">\(v(x,y)\)</span>とすると、</p>
+<p><span class="math display">\[
+  \lim_{\Delta z \rightarrow 0} \frac{f(z+\Delta z) - f(z)}{\Delta z}
+  =
+  \lim_{\Delta z \rightarrow 0} \frac{u(x+\Delta z,y+\Delta y) - u(x,y)}{\Delta x + i \Delta y}
+  + \lim_{\Delta z \rightarrow 0} i \frac{v(x+\Delta z,y+\Delta y) - v(x,y)}{\Delta x + i \Delta y}
+\]</span></p>
+<p>ここで、まず<span class="math inline">\(y\)</span>軸をあわせて、<span class="math inline">\(x\)</span>軸から近づく場合を考える。 すると、<span class="math inline">\(\Delta y = 0\)</span>であるから、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \lim_{\Delta z \rightarrow 0} \frac{f(z+\Delta z) - f(z)}{\Delta z}
+  &amp;=
+  \lim_{\Delta x \rightarrow 0} \frac{u(x+\Delta x,y) - u(x,y)}{\Delta x}
+  + \lim_{\Delta x \rightarrow 0} i \frac{v(x+\Delta x,y) - v(x,y)}{\Delta x}\\
+  &amp;=
+  \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x}
+\end{aligned}
+\]</span></p>
+<p>同様に、<span class="math inline">\(\Delta x = 0\)</span>とすると、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \lim_{\Delta z \rightarrow 0} \frac{f(z+\Delta z) - f(z)}{\Delta z}
+  &amp;=
+  \lim_{\Delta y \rightarrow 0} \frac{u(x,y+\Delta y) - u(x,y)}{i\Delta y}
+  + \lim_{\Delta y \rightarrow 0} i \frac{v(x,y+\Delta y) - v(x,y)}{i\Delta y}\\
+  &amp;=
+  -i \frac{\partial u}{\partial y} + \frac{\partial v}{\partial y}
+\end{aligned}
+\]</span></p>
+<p>を得る。分母に<span class="math inline">\(i\)</span>があることに注意。これらが一致しなくてはならないのだから、実部と虚部を比較すると、コーシー・リーマンの関係式、</p>
+<p><span class="math display">\[
+  \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y},
+  \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}
+\]</span> を得る。</p>
+<h3 id="section-1">19. (2)</h3>
+<p><span class="math inline">\(z = x+ iy\)</span>とし、<span class="math inline">\(z^2\)</span>の実部と虚部を求めると、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  z^2 &amp;= (x+iy)^2\\
+  &amp;= x^2 - y^2 +  2ixy
+\end{aligned}
+\]</span></p>
+<p>したがって、<span class="math inline">\(u = x^2 - y^2\)</span>、<span class="math inline">\(v = 2xy\)</span>である。 それぞれ<span class="math inline">\(x\)</span>および<span class="math inline">\(y\)</span>で偏微分すればコーシー・リーマンの関係式を満たすことがわかる。一般に、実部や虚部、絶対値や複素共役など、あらわに複素数を操作する関数以外の関数、すなわち実数関数の<span class="math inline">\(x\)</span>をそのまま<span class="math inline">\(z\)</span>で置き換えた関数はほぼ正則であり、その実部と虚部はコーシー・リーマンの関係式を満たすと思ってよい。</p>
+<h3 id="section-2">19. (3)</h3>
+<p>前問と同様に<span class="math inline">\(z = x+ iy\)</span>とし、<span class="math inline">\(z^2\)</span>の実部と虚部を求めると、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  z\bar{z} &amp;= (x+iy)(x-iy)\\
+  &amp;= x^2 + y^2
+\end{aligned}
+\]</span></p>
+<p>したがって、この関数はつねに実数値をとるので、 実部と虚部の関係式であるコーシー・リーマンの関係式は満たさない。 なお、<span class="math inline">\(z \bar{z} = |z|^2\)</span>、すなわち<span class="math inline">\(z\)</span>の絶対値であることにも注意しておこう。</p>
+<h3 id="section-3">20. (1)</h3>
+<p><span class="math inline">\(z = (1+i)t\)</span>とおけば、積分は<span class="math inline">\(t\)</span>をパラメータとして、</p>
+<p><span class="math display">\[
+  \int z^2 \mathrm{d} z = \int_0^1 (1+i)^3 t^2  \mathrm{d} t
+\]</span> とあらわすことができる(<span class="math inline">\(\mathrm{d} z = (1+i) \mathrm{d} t\)</span>に注意せよ)。これは簡単に積分できて、</p>
+<p><span class="math display">\[
+  (1+i)^3 \int_0^1 t^2  \mathrm{d} t = \frac{(1+i)^3}{3}
+\]</span></p>
+<p>すなわち、単に<span class="math inline">\(z\)</span>を実数の場合と同様に</p>
+<p><span class="math display">\[
+  \int_0^{1+i} z^2 \mathrm{d} z = \left[ \frac{z^3}{3}  \right]_0^{1+i}
+\]</span></p>
+<p>とするのと同じ結果が得られた。 <strong>これは今回考えた関数が積分範囲で正則であったからである。</strong> 一般に、積分範囲で正則な複素関数は、実数と同様に積分でき、その値は積分経路に依存しない(積分値は始点と終点のみに依存する)。</p>
+<h3 id="section-4">20. (2)</h3>
+<p>点<span class="math inline">\(a\)</span>を中心とする半径<span class="math inline">\(r\)</span>の円は、極座標を用いて<span class="math inline">\(z = a + r\mathrm{e}^{i\theta} ~(0 \le \theta &lt; 2\pi)\)</span>とあらわすことができる。<span class="math inline">\(\mathrm{d} z = ri \mathrm{e}^{i\theta} \mathrm{d} \theta\)</span>に注意すると、もとの積分は<span class="math inline">\(\theta\)</span>をパラメータとして、</p>
+<p><span class="math display">\[
+  \oint (z-a)^n \mathrm{d} z = i r^{n+1} \int_0^{2\pi} \mathrm{e}^{i(n+1)\theta} \mathrm{d} \theta
+\]</span></p>
+<p>と表せる。 ここで、<span class="math inline">\(n = -1\)</span>の場合とそうでない場合を分けて考えると、</p>
+<p><span class="math display">\[
+  \oint (z-a)^n \mathrm{d} z =
+  \left\{
+  \begin{array}{cccc}
+    i r^{n+1} \left[ \displaystyle\frac{\mathrm{e}^{i(n+1)\theta}}{i(n+1)} \right]_0^{2\pi} &amp; = &amp; 0      &amp; (n \neq -1) \\
+    i \left[ \theta  \right]_0^{2\pi}                                               &amp; = &amp; 2\pi i &amp; (n=-1)
+  \end{array}
+  \right.
+\]</span></p>
+<p>を得る。すなわち、<span class="math inline">\(z^n\)</span>の形を特異点周りに周回積分した場合、 <span class="math inline">\(1/z\)</span>以外はすべて<span class="math inline">\(0\)</span>となる。これは重要な結果である。 後に述べるローラン展開において、適当な周回積分に寄与する項は <span class="math inline">\(c_{-1}\)</span>のみということを意味する。したがって、この項の値さえ わかれば積分値が求められる。これも複素関数の正則性という (関数にとって)厳しい条件からの帰結である。</p>
+<h3 id="section-5">21. (1)</h3>
+<p><span class="math inline">\(|z|&lt;1\)</span>の場合、例に挙げられた展開で<span class="math inline">\(-z\)</span>を代入すればよいから、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \frac{1}{z-1} &amp;= - \frac{1}{1-z}\\
+  &amp;= -(1 + z + z^2 + \cdots + z^n + \cdots) \\
+  &amp;= -\sum_{n=0}^{\infty} z^n
+\end{aligned}
+\]</span></p>
+<p><span class="math inline">\(|z|&gt;1\)</span>の場合、<span class="math inline">\(|1/z|&lt;1\)</span>に注意すれば、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \frac{1}{z-1} &amp;= \frac{1}{z} \frac{1}{1 - 1/z}\\
+  &amp;= z^{-1}
+  \left(
+  1 + z^{-1}+ z^{-2}+ \cdots
+  \right)\\
+  &amp;= \sum_{n=1}^{\infty} z^{-n}
+\end{aligned}
+\]</span></p>
+<p>すなわち、 <strong>ローラン展開は同じ中心でも範囲によって係数が異なる</strong> 。正確に言うと、範囲が新たな特異点をまたぐときに値が変わる。 これがなぜかは留数定理を学ぶときに明らかになるだろう。</p>
+<h3 id="section-6">21. (2)</h3>
+<p>まず、<span class="math inline">\(f(z)\)</span>を部分分数分解すると、</p>
+<p><span class="math display">\[
+  f(z) = \frac{1}{z(z-1)} = \frac{1}{z-1} - \frac{1}{z}
+\]</span></p>
+<p>あとは前問と同様に解くことができる。</p>
+<h2 id="解説">解説</h2>
+<h3 id="正則性">正則性</h3>
+<p>複素関数<span class="math inline">\(f(z)\)</span>が、ある領域<span class="math inline">\(D\)</span>のすべての点で微分可能であるとき、 <span class="math inline">\(f(z)\)</span>は<span class="math inline">\(D\)</span>において <strong>正則 (holomorphic)</strong> であるという。 複素関数<span class="math inline">\(f(z)\)</span>がある点で微分可能であるためには、その実部と虚部に コーシー・リーマンの関係式が成り立ってなくてはいけない。 この関係式をさらに<span class="math inline">\(x\)</span>,<span class="math inline">\(y\)</span>で偏微分してみよう。</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \frac{\partial^2 u}{\partial x^2} &amp;= \frac{\partial^2 v}{\partial x \partial y}\\
+  \frac{\partial^2 u}{\partial y^2} &amp;= - \frac{\partial^2 v}{\partial x \partial y}
+\end{aligned}
+\]</span></p>
+<p>すなわち、</p>
+<p><span class="math display">\[
+  \Delta u = 0
+\]</span></p>
+<p>が成り立つことがわかる。ここで<span class="math inline">\(\Delta \equiv \partial^2/\partial x^2 + \partial^2/\partial y^2\)</span>は ラプラシアンである。同様に、虚部である<span class="math inline">\(v\)</span>についても</p>
+<p><span class="math display">\[
+  \Delta v = 0
+\]</span></p>
+<p>が成り立つ。ラプラシアンを演算して0となる関数を <strong>調和関数 (Harmonic function)</strong> であるという。複素関数<span class="math inline">\(f(z)= u(x,y) + i v(x,y)\)</span>が正則であるためには、実部<span class="math inline">\(u(x,y)\)</span>、虚部<span class="math inline">\(v(x,y)\)</span>がそれぞれ調和関数でなくてはならない。したがって、実数関数の微分可能性よりも厳しい条件が必要であり、これが複素関数論の豊富な応用を生み出す。</p>
+<p>複素関数が正則でないとは、たとえば<span class="math inline">\(1/z\)</span>のように<span class="math inline">\(\lim z \rightarrow 0\)</span>で無限大になってしまうものや、<span class="math inline">\(Re z\)</span>や<span class="math inline">\(z \bar{z}\)</span>のように実部と虚部をあらわに操作する関数などがある。しかし、本ゼミにおいては実積分のために複素積分を用いるのが目的なので実用上は値が無限大になる点においては正則でないと覚えておけば良い。</p>
+<h3 id="特異点">特異点</h3>
+<p>関数<span class="math inline">\(f(z)\)</span>が、点<span class="math inline">\(a\)</span>では正則ではないが、その点の近傍に<span class="math inline">\(f(z)\)</span>が正則であるような点が存在するとき、<span class="math inline">\(a\)</span>を<span class="math inline">\(f(z)\)</span>の <strong>特異点 (singular point)</strong> と呼ぶ。特に、<span class="math inline">\(a\)</span>の任意の近傍に特異点が無い場合、<span class="math inline">\(a\)</span>を孤立特異点と呼ぶ。物理数学で扱われる特異点はほぼすべて孤立特異点である</p>
+<p>点<span class="math inline">\(a\)</span>が関数<span class="math inline">\(f(z)\)</span>の孤立特異点である場合、そのまわりで、</p>
+<p><span class="math display">\[
+  f(z) = \sum_{n=-\infty}^{\infty} c_n(z-a)^n
+\]</span></p>
+<p>と展開できる。これを <strong>ローラン(Laurent)展開</strong> と言う。このとき、<span class="math inline">\(n\ge 0\)</span>の項、すなわち、<span class="math inline">\(\sum_{n=0}^{\infty} c_n(z-a)^n\)</span>は点<span class="math inline">\(a\)</span>においても正則であるから、<span class="math inline">\(f(z)\)</span>の特異性は、残りの項 <span class="math inline">\(\sum_{n=-\infty}^{-1} c_n(z-a)^n\)</span>によると考えられる。この項をローラン展開の主要部と呼ぶ。</p>
+<p>まず、主要部が無い場合は、点<span class="math inline">\(a\)</span>を除きうる特異点と呼び、<span class="math inline">\(\lim_{z\rightarrow a} f(z)\)</span>の値を適当に再定義すれば<span class="math inline">\(f(z)\)</span>は<span class="math inline">\(a\)</span>において正則となる。</p>
+<p>主要部が無限項である場合、<span class="math inline">\(a\)</span>を <strong>真性特異点 (essential singularity)</strong> と呼ぶ。たとえば<span class="math inline">\(\mathrm{e}^{1/z}\)</span>は、原点が真性特異点となる。</p>
+<p>最後に主要部が有限項である場合、点<span class="math inline">\(a\)</span>を <strong>極 (pole)</strong> と呼ぶ。物理数学で扱うのは主にこの極である。特に、主要部の最高次数が<span class="math inline">\(k\)</span>である場合、<span class="math inline">\(a\)</span>を<span class="math inline">\(f(z)\)</span>の <strong>k位の極</strong> と呼ぶ。</p>
+          </article>
+  </body>
+
+  </html>
