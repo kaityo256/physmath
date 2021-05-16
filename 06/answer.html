@@ -102,12 +102,13 @@
   &amp;= x^2 + y^2
 \end{aligned}
 \]</span></p>
-<p>したがって、この関数はつねに実数値をとるので、 実部と虚部の関係式であるコーシー・リーマンの関係式は満たさない。 なお、<span class="math inline">\(z \bar{z} = |z|^2\)</span>、すなわち<span class="math inline">\(z\)</span>の絶対値であることにも注意しておこう。</p>
+<p>したがって、この関数はつねに実数値をとるので、実部と虚部の関係式であるコーシー・リーマンの関係式は満たさない。なお、<span class="math inline">\(z \bar{z} = |z|^2\)</span>、すなわち<span class="math inline">\(z\)</span>の絶対値であることにも注意しておこう。</p>
 <h3 id="section-3">20. (1)</h3>
 <p><span class="math inline">\(z = (1+i)t\)</span>とおけば、積分は<span class="math inline">\(t\)</span>をパラメータとして、</p>
 <p><span class="math display">\[
   \int z^2 \mathrm{d} z = \int_0^1 (1+i)^3 t^2  \mathrm{d} t
-\]</span> とあらわすことができる(<span class="math inline">\(\mathrm{d} z = (1+i) \mathrm{d} t\)</span>に注意せよ)。これは簡単に積分できて、</p>
+\]</span></p>
+<p>とあらわすことができる(<span class="math inline">\(\mathrm{d} z = (1+i) \mathrm{d} t\)</span>に注意せよ)。これは簡単に積分できて、</p>
 <p><span class="math display">\[
   (1+i)^3 \int_0^1 t^2  \mathrm{d} t = \frac{(1+i)^3}{3}
 \]</span></p>
@@ -121,7 +122,7 @@
 <p><span class="math display">\[
   \oint (z-a)^n \mathrm{d} z = i r^{n+1} \int_0^{2\pi} \mathrm{e}^{i(n+1)\theta} \mathrm{d} \theta
 \]</span></p>
-<p>と表せる。 ここで、<span class="math inline">\(n = -1\)</span>の場合とそうでない場合を分けて考えると、</p>
+<p>と表せる。ここで、<span class="math inline">\(n = -1\)</span>の場合とそうでない場合を分けて考えると、</p>
 <p><span class="math display">\[
   \oint (z-a)^n \mathrm{d} z =
   \left\{
@@ -131,7 +132,7 @@
   \end{array}
   \right.
 \]</span></p>
-<p>を得る。すなわち、<span class="math inline">\(z^n\)</span>の形を特異点周りに周回積分した場合、 <span class="math inline">\(1/z\)</span>以外はすべて<span class="math inline">\(0\)</span>となる。これは重要な結果である。 後に述べるローラン展開において、適当な周回積分に寄与する項は <span class="math inline">\(c_{-1}\)</span>のみということを意味する。したがって、この項の値さえ わかれば積分値が求められる。これも複素関数の正則性という (関数にとって)厳しい条件からの帰結である。</p>
+<p>を得る。すなわち、<span class="math inline">\(z^n\)</span>の形を特異点周りに周回積分した場合、<span class="math inline">\(1/z\)</span>以外はすべて<span class="math inline">\(0\)</span>となる。これは重要な結果である。後に述べるローラン展開において、適当な周回積分に寄与する項は<span class="math inline">\(c_{-1}\)</span>のみということを意味する。したがって、この項の値さえわかれば積分値が求められる。これも複素関数の正則性という(関数にとって)厳しい条件からの帰結である。</p>
 <h3 id="section-5">21. (1)</h3>
 <p><span class="math inline">\(|z|&lt;1\)</span>の場合、例に挙げられた展開で<span class="math inline">\(-z\)</span>を代入すればよいから、</p>
 <p><span class="math display">\[
@@ -152,7 +153,7 @@
   &amp;= \sum_{n=1}^{\infty} z^{-n}
 \end{aligned}
 \]</span></p>
-<p>すなわち、 <strong>ローラン展開は同じ中心でも範囲によって係数が異なる</strong> 。正確に言うと、範囲が新たな特異点をまたぐときに値が変わる。 これがなぜかは留数定理を学ぶときに明らかになるだろう。</p>
+<p>すなわち、 <strong>ローラン展開は同じ中心でも範囲によって係数が異なる</strong> 。正確に言うと、範囲が新たな特異点をまたぐときに値が変わる。これがなぜかは留数定理を学ぶときに明らかになるだろう。</p>
 <h3 id="section-6">21. (2)</h3>
 <p>まず、<span class="math inline">\(f(z)\)</span>を部分分数分解すると、</p>
 <p><span class="math display">\[
@@ -161,7 +162,7 @@
 <p>あとは前問と同様に解くことができる。</p>
 <h2 id="解説">解説</h2>
 <h3 id="正則性">正則性</h3>
-<p>複素関数<span class="math inline">\(f(z)\)</span>が、ある領域<span class="math inline">\(D\)</span>のすべての点で微分可能であるとき、 <span class="math inline">\(f(z)\)</span>は<span class="math inline">\(D\)</span>において <strong>正則 (holomorphic)</strong> であるという。 複素関数<span class="math inline">\(f(z)\)</span>がある点で微分可能であるためには、その実部と虚部に コーシー・リーマンの関係式が成り立ってなくてはいけない。 この関係式をさらに<span class="math inline">\(x\)</span>,<span class="math inline">\(y\)</span>で偏微分してみよう。</p>
+<p>複素関数<span class="math inline">\(f(z)\)</span>が、ある領域<span class="math inline">\(D\)</span>のすべての点で微分可能であるとき、<span class="math inline">\(f(z)\)</span>は<span class="math inline">\(D\)</span>において <strong>正則 (holomorphic)</strong> であるという。複素関数<span class="math inline">\(f(z)\)</span>がある点で微分可能であるためには、その実部と虚部にコーシー・リーマンの関係式が成り立ってなくてはいけない。この関係式をさらに<span class="math inline">\(x\)</span>,<span class="math inline">\(y\)</span>で偏微分してみよう。</p>
 <p><span class="math display">\[
 \begin{aligned}
   \frac{\partial^2 u}{\partial x^2} &amp;= \frac{\partial^2 v}{\partial x \partial y}\\
@@ -172,7 +173,7 @@
 <p><span class="math display">\[
   \Delta u = 0
 \]</span></p>
-<p>が成り立つことがわかる。ここで<span class="math inline">\(\Delta \equiv \partial^2/\partial x^2 + \partial^2/\partial y^2\)</span>は ラプラシアンである。同様に、虚部である<span class="math inline">\(v\)</span>についても</p>
+<p>が成り立つことがわかる。ここで<span class="math inline">\(\Delta \equiv \partial^2/\partial x^2 + \partial^2/\partial y^2\)</span>はラプラシアンである。同様に、虚部である<span class="math inline">\(v\)</span>についても</p>
 <p><span class="math display">\[
   \Delta v = 0
 \]</span></p>
@@ -184,7 +185,7 @@
 <p><span class="math display">\[
   f(z) = \sum_{n=-\infty}^{\infty} c_n(z-a)^n
 \]</span></p>
-<p>と展開できる。これを <strong>ローラン(Laurent)展開</strong> と言う。このとき、<span class="math inline">\(n\ge 0\)</span>の項、すなわち、<span class="math inline">\(\sum_{n=0}^{\infty} c_n(z-a)^n\)</span>は点<span class="math inline">\(a\)</span>においても正則であるから、<span class="math inline">\(f(z)\)</span>の特異性は、残りの項 <span class="math inline">\(\sum_{n=-\infty}^{-1} c_n(z-a)^n\)</span>によると考えられる。この項をローラン展開の主要部と呼ぶ。</p>
+<p>と展開できる。これを <strong>ローラン(Laurent)展開</strong> と言う。このとき、<span class="math inline">\(n\ge 0\)</span>の項、すなわち、<span class="math inline">\(\sum_{n=0}^{\infty} c_n(z-a)^n\)</span>は点<span class="math inline">\(a\)</span>においても正則であるから、<span class="math inline">\(f(z)\)</span>の特異性は、残りの項<span class="math inline">\(\sum_{n=-\infty}^{-1} c_n(z-a)^n\)</span>によると考えられる。この項をローラン展開の主要部と呼ぶ。</p>
 <p>まず、主要部が無い場合は、点<span class="math inline">\(a\)</span>を除きうる特異点と呼び、<span class="math inline">\(\lim_{z\rightarrow a} f(z)\)</span>の値を適当に再定義すれば<span class="math inline">\(f(z)\)</span>は<span class="math inline">\(a\)</span>において正則となる。</p>
 <p>主要部が無限項である場合、<span class="math inline">\(a\)</span>を <strong>真性特異点 (essential singularity)</strong> と呼ぶ。たとえば<span class="math inline">\(\mathrm{e}^{1/z}\)</span>は、原点が真性特異点となる。</p>
 <p>最後に主要部が有限項である場合、点<span class="math inline">\(a\)</span>を <strong>極 (pole)</strong> と呼ぶ。物理数学で扱うのは主にこの極である。特に、主要部の最高次数が<span class="math inline">\(k\)</span>である場合、<span class="math inline">\(a\)</span>を<span class="math inline">\(f(z)\)</span>の <strong>k位の極</strong> と呼ぶ。</p>
