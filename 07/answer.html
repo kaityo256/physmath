@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title></title>
+    <style type="text/css">
+      p {
+        padding-left: 1em;
+      }
+
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      p.caption {
+        display: none;
+      }
+
+      img {
+        width: 100%
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://kaityo256.github.io/python_zero/github-markdown.css" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+        <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="第七回-留数定理とその応用">第七回 留数定理とその応用</h1>
+<h2 id="目的">目的</h2>
+<p>留数定理を用いた複素積分と、その応用として実定積分の計算方法を学ぶ。</p>
+<h2 id="解答">解答</h2>
+<h3 id="section">22. (1)</h3>
+<p><span class="math inline">\(\mathrm{e}^{z}\)</span>は正則な関数であるから、公式で<span class="math inline">\(f(z)=\mathrm{e}^z\)</span>、<span class="math inline">\(a=-1\)</span>と置けばよい。</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \frac{1}{2\pi i} \int_{|z|=2} \frac{\mathrm{e}^z}{z+1} &amp;= f(-1)\\
+  &amp;= e^{-1}
+\end{aligned}
+\]</span></p>
+<p>すなわち、</p>
+<p><span class="math display">\[
+  \int_{|z|=2} \frac{\mathrm{e}^z}{z+1} = 2\pi i e^{-1}
+\]</span></p>
+<p>ここで、積分路が囲む範囲<span class="math inline">\(|z|&lt;2\)</span>に、特異点<span class="math inline">\(z=-1\)</span>が含まれることに注意しよう。 積分路が特異点を囲まなければ関数<span class="math inline">\(\mathrm{e}^z/(z+1)\)</span>は正則となるので 周回積分は<span class="math inline">\(0\)</span>である。</p>
+<h3 id="section-1">22. (2)</h3>
+<p>まず、部分分数分解を行う。</p>
+<p><span class="math display">\[
+  \frac{z}{z^2+1} = \frac{1}{2} \left( \frac{1}{z+i} + \frac{1}{z-i} \right)
+\]</span></p>
+<p>コーシーの積分定理から、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \int_{|z|=2} \frac{1}{z+i} \mathrm{d} z &amp;= 2 \pi i \\
+  \int_{|z|=2} \frac{1}{z-i} \mathrm{d} z &amp;= 2 \pi i \\
+\end{aligned}
+\]</span></p>
+<p>であるから、</p>
+<p><span class="math display">\[
+  \int_{|z|=2} \frac{1}{z^2+1} = \frac{2\pi i + 2\pi i}{2} = 2 \pi i
+\]</span></p>
+<h3 id="section-2">23. (1)</h3>
+<p><span class="math inline">\(f(z) = \mathrm{e}^{3z}\)</span>とおけば、コーシーの積分公式より、</p>
+<p><span class="math display">\[
+  \frac{1}{2\pi i} \int_{|z|=3} \frac{f(z)}{(z-2)^2} = f&#39;(2) = 3\mathrm{e}^{6}
+\]</span></p>
+<p>以上から、</p>
+<p><span class="math display">\[
+  \int_{|z|=3} \frac{\mathrm{e}^{3z}}{(z-2)^2} = 6 \pi i \mathrm{e}^{6}
+\]</span></p>
+<h3 id="section-3">23. (2)</h3>
+<p>まず注意したいのは、関数<span class="math inline">\(\displaystyle \frac{1}{z^2(z-3)}\)</span>は 特異点として<span class="math inline">\(z=0,3\)</span>を持つが、積分範囲<span class="math inline">\(|z|=1\)</span>の中にあるのは<span class="math inline">\(z=0\)</span>のみである。 したがって、関数<span class="math inline">\(1/(z-3)\)</span>は積分領域で正則であるから、 <span class="math inline">\(f(z) = 1/(z-3)\)</span>と置けば、</p>
+<p><span class="math display">\[
+  \frac{1}{2\pi i} \int_{|z|=1} \frac{f(z)}{z^2} = f&#39;(0) = - \frac{1}{9}
+\]</span></p>
+<p>したがって、</p>
+<p><span class="math display">\[
+  \int_{|z|=1} \frac{1}{z^2(z-3)} =- \frac{2 \pi i}{9}
+\]</span></p>
+<p>このように、特異点のうち積分に寄与するのは、閉曲線の内部にあるもののみである。 これは、<span class="math inline">\(|z|&lt;3\)</span>と、<span class="math inline">\(|z|&gt;3\)</span>の二つの範囲で<span class="math inline">\(\displaystyle \frac{1}{z^2(z-3)}\)</span>をローラン展開すればより明確に理解できよう。</p>
+<h3 id="section-4">24. (1)</h3>
+<p>まず、<span class="math inline">\(\mathrm{e}^{iz}\)</span>は(無限遠を除いた)すべての領域で正則であることに注意しよう。 したがって特異点は<span class="math inline">\(z = \pm i a\)</span>である。 部分分数分解すると、</p>
+<p><span class="math display">\[
+  \frac{\mathrm{e}^{iz}}{z^2+a^2} = \frac{\mathrm{e}^{iz}}{2ia}
+  \left(
+  \frac{1}{z-ia} - \frac{1}{z+ia}
+  \right)
+\]</span></p>
+<p>となる。 <span class="math inline">\(z=ia\)</span>の周りで周回積分すると、</p>
+<p><span class="math display">\[
+  \frac{1}{2\pi i} \int_{|z-ia|=\sigma} \frac{\mathrm{e}^{iz}}{2ia}
+  \left(
+  \frac{1}{z-ia} - \frac{1}{z+ia}
+  \right)
+  = \frac{\mathrm{e}^{-a}}{2ia}
+\]</span></p>
+<p>以上から、</p>
+<p><span class="math display">\[
+  \mathrm{Res} f(ia) = \frac{\mathrm{e}^{-a}}{2ia}
+\]</span></p>
+<p>同様に、<span class="math inline">\(z=-ia\)</span>の周りで周回積分すれば、</p>
+<p><span class="math display">\[
+  \mathrm{Res} f(-ia) = - \frac{\mathrm{e}^{a}}{2ia}
+\]</span></p>
+<p>を得る。</p>
+<p><strong>別解</strong> 留数とは、ローラン展開したときの係数の<span class="math inline">\(c_{-1}\)</span>そのものである。 したがって、<span class="math inline">\(f(z)\)</span>が<span class="math inline">\(a\)</span>を一位の極として持つなら、</p>
+<p><span class="math display">\[
+  f(z) = c_{-1} (z-a)^{-1} + c_0 + c_1 (z-a) + c_2 (z-a)^2 + \cdots
+\]</span></p>
+<p>と展開されるはずである。 そこで、<span class="math inline">\(f(z)(z-a)\)</span>をかけてから、極限<span class="math inline">\(\lim z \rightarrow a\)</span>を考えると、</p>
+<p><span class="math display">\[
+  \lim_{z \rightarrow a} f(z)(a-z) = c_{-1}
+\]</span></p>
+<p>となり、これは求める留数である。</p>
+<p>この方法を問題に適用すると、</p>
+<p><span class="math display">\[
+  \mathrm{Res} f(ia) = \lim_{z \rightarrow ia} \left( (z-ia) \frac{\mathrm{e}^{iz}}{z^2+a^2} \right)
+  = \frac{\mathrm{e}^{-a}}{2ia}
+\]</span></p>
+<p><span class="math display">\[
+  \mathrm{Res} f(-ia) = \lim_{z \rightarrow -ia} \left( (z+ia) \frac{\mathrm{e}^{iz}}{z^2+a^2} \right)
+  = -\frac{\mathrm{e}^{a}}{2ia}
+\]</span></p>
+<p>とすぐに求めることができる。 物理数学において複素積分は計算を簡単に行うための便法であるので、 複素積分自体もなるべく簡単に計算ができるように工夫したい。 そのためには典型的なパターンをいくつか覚える必要があるが、今回の例はその一つである。 他には<span class="math inline">\(1/(1-z)\)</span>のテイラー展開を利用するものなどがある。</p>
+<h3 id="section-5">24. (2)</h3>
+<p>特異点は<span class="math inline">\(\mathrm{e}^{i \pi /4}\)</span>、<span class="math inline">\(\mathrm{e}^{i 3\pi /4}\)</span>、<span class="math inline">\(\mathrm{e}^{-i \pi /4}\)</span>、<span class="math inline">\(\mathrm{e}^{-i 3\pi /4}\)</span>の４つで、いずれも一位の極である。 部分分数展開しても良いが、前問の別解を使うほうが便利である。</p>
+<p><span class="math inline">\(z = \mathrm{e}^{i \pi /4}\)</span>における留数は</p>
+<p><span class="math display">\[
+  \mathrm{Res} f(\mathrm{e}^{i \pi /4}) = \lim_{z \rightarrow \mathrm{e}^{i \pi /4}} \left( \frac{z-\mathrm{e}^{i \pi /4}}{z^4+1} \right)
+  = \frac{\exp{(-3\pi i/4})}{4}
+\]</span></p>
+<p>ただし、<span class="math inline">\(f(0)=g(0)=0\)</span>の時、</p>
+<p><span class="math display">\[
+  \lim_{x\rightarrow 0} \frac{f(x)}{g(x)} = \frac{f&#39;(x)}{g&#39;(x)}
+\]</span></p>
+<p>を用いた(ロピタルの定理)。 他の留数も同様に求められる。</p>
+<h3 id="section-6">25. (1)</h3>
+<p>まず、<span class="math inline">\(x^4+1\)</span>は偶関数であるから、</p>
+<p><span class="math display">\[
+  \int_0^{\infty} \frac{1}{x^4+1} \mathrm{d} x = \frac{1}{2} \int_{-\infty}^{\infty}  \frac{1}{x^4+1} \mathrm{d} x
+\]</span></p>
+<p>として、以下の図のような積分路<span class="math inline">\(C\)</span>を考える。</p>
+<p><img src="z_int2.png" alt="z_int2.png" /> 半円の積分路。<span class="math inline">\(R\)</span>は無限大にする。</p>
+<p>ここで、<span class="math inline">\(\lim R \rightarrow \infty\)</span>の極限で、半円の部分の積分の寄与は<span class="math inline">\(0\)</span>となる(解説参照)。 したがって、</p>
+<p><span class="math display">\[
+  \int_{-\infty}^{\infty} \frac{1}{x^4+1} \mathrm{d} x = \lim_{R \rightarrow \infty} \int_C \frac{1}{z^4+1} \mathrm{d} z
+\]</span></p>
+<p>ここで、積分路の内部にある特異点は<span class="math inline">\(z = \mathrm{e}^{i\pi/4},\mathrm{e}^{i3\pi/4}\)</span>の二つであるから、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \int_C \frac{1}{z^4+1} \mathrm{d} z &amp;= 2 \pi i \left( \mathrm{Res} f(\mathrm{e}^{\pi i/4}) +\mathrm{Res} f(\mathrm{e}^{3\pi i/4})  \right)\\
+  &amp;= 2 \pi i \left(  \frac{\exp{(-3\pi i /4})}{4} + \frac{\exp{(-9 \pi i /4})}{4}  \right)\\
+  &amp;= 2 \pi i \left(  \frac{\mathrm{e}^{\pi i/4}-\mathrm{e}^{- \pi i/4}}{4}  \right)\\
+  &amp;= \pi \sin \frac{\pi}{4}
+\end{aligned}
+\]</span></p>
+<p>以上より、</p>
+<p><span class="math display">\[
+  \int_0^{\infty} \frac{1}{x^4+1} \mathrm{d} x = \frac{\pi}{2} \sin \frac{\pi}{4} = \frac{\pi}{2\sqrt{2}}
+\]</span></p>
+<h3 id="section-7">25. (2)</h3>
+<p><span class="math inline">\(f(z) = \mathrm{e}^{ikz}/(z^2+1)\)</span>とし、以下の複素積分を考える。</p>
+<p><span class="math display">\[
+  \int_C \frac{e^{ikz}}{z^2+1} \mathrm{d} z
+\]</span></p>
+<p>まず、<span class="math inline">\(f(z)\)</span>の上半面内の特異点は<span class="math inline">\(z=i\)</span>のみであるので、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \int_C \frac{e^{ikz}}{z^2+1} \mathrm{d} z &amp;= 2\pi i ~\mathrm{Res} f(i)\\
+  &amp;= 2\pi i \left( \frac{\mathrm{e}^{-k}}{2i} \right) \\
+  &amp;= \pi \mathrm{e}^{-k}
+\end{aligned}
+\]</span></p>
+<p>以上から、</p>
+<p><span class="math display">\[
+  \int_{-\infty}^{\infty} \frac{\cos kx}{x^2+1} \mathrm{d} x =
+  \mathrm{Re} \int_C \frac{\mathrm{e}^{ikz}}{z^2+1} \mathrm{d} z = \pi \mathrm{e}^{-k}
+\]</span></p>
+<h2 id="解説">解説</h2>
+<h3 id="コーシーの積分定理">コーシーの積分定理</h3>
+<p>複素関数が微分可能であるとき、その実部と虚部には 強い制限(コーシー・リーマンの関係式)が課せられるのであった。 その帰結として、以下のコーシーの積分定理が成り立つ。</p>
+<p>関数<span class="math inline">\(f(z)\)</span>が領域<span class="math inline">\(D\)</span>で正則であるとする。<span class="math inline">\(C\)</span>は<span class="math inline">\(D\)</span>内の単一閉曲線で、 <span class="math inline">\(C\)</span>の内部が<span class="math inline">\(D\)</span>の点のみであるとき、</p>
+<p><span class="math display">\[
+  \int_C f(z) \mathrm{d} z = 0
+\]</span></p>
+<p>が成り立つ。すなわち、 <strong>正則な関数を周回積分すると値が<span class="math inline">\(0\)</span>となる</strong> 。 この積分定理と関数の正則性から、以下のコーシーの積分公式が導かれる。</p>
+<p>関数<span class="math inline">\(f(z)\)</span>は領域<span class="math inline">\(D\)</span>であり、<span class="math inline">\(C\)</span>は内部に領域<span class="math inline">\(D\)</span>の点のみを持つ単一閉曲線である。 このとき、<span class="math inline">\(C\)</span>内の点<span class="math inline">\(a\)</span>について、以下の公式が成り立つ。</p>
+<p><span class="math display">\[
+  f(a) = \frac{1}{2\pi i} \int_C \frac{f(z)}{z-a} \mathrm{d} z 
+\]</span></p>
+<p>これは、<span class="math inline">\(C\)</span>の内部の任意の点<span class="math inline">\(a\)</span>での値<span class="math inline">\(f(a)\)</span>が<span class="math inline">\(C\)</span>上の<span class="math inline">\(f(z)\)</span>の値だけで決まる、 すなわち、 <strong>境界の値からその内部の値がすべて決まることを意味している</strong> 。 さらに以下の公式が成り立つ(これもコーシーの積分公式と呼ばれる)。</p>
+<p><span class="math display">\[
+  f^{n}(a) = \frac{n!}{2\pi i} \int_C \frac{f(z)}{(z-a)^{n+1}} \mathrm{d} z  
+\]</span></p>
+<p>すなわち、 <strong>積分の値が微分から求められる</strong> 。 これらの性質はすべて、複素関数が微分可能(正則)であるという条件が厳しいからである。 ここで、式()は、式()を形式的に左右<span class="math inline">\(a\)</span>で微分した形に なっていることに注意しよう。</p>
+<p>さて、なぜコーシーの積分定理が成り立つか考えよう。 まず、<span class="math inline">\((z-a)^n\)</span>を<span class="math inline">\(a\)</span>の周りに周回積分すると、その半径にかかわらず</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \int_{|z-a|=r} (z-a)^n \mathrm{d} z=
+  \left\{
+  \begin{array}{ccc}
+     &amp; 0      &amp; (n \neq -1) \\
+     &amp; 2\pi i &amp; (n = -1)
+  \end{array}
+  \right.
+\end{aligned}
+\]</span></p>
+<p>となるのであった。 また、<span class="math inline">\(f(z)\)</span>が考えている領域で正則であるならば、</p>
+<p><span class="math display">\[
+  f(z) = f(a) + f&#39;(a) (z-a) + \frac{f&#39;&#39;(a)(z-a)^2}{2} + \cdots
+\]</span></p>
+<p>と<span class="math inline">\(a\)</span>の周りでテイラー展開できる。 したがって、</p>
+<p><span class="math display">\[
+  \frac{f(z)}{z-a} = \frac{f(a)}{z-a} + f&#39;(a) + \frac{f&#39;&#39;(a)(z-a)}{2} + \cdots
+\]</span></p>
+<p>となるから、周回積分すれば、<span class="math inline">\(1/(z-a)\)</span>の係数のみが残るので、</p>
+<p><span class="math display">\[
+  \int_C \frac{f(z)}{z-a} \mathrm{d} z = 2\pi i f(a)
+\]</span></p>
+<p>と、コーシーの積分公式を得た。 同様に<span class="math inline">\(f(z)/(z-a)^{n+1}\)</span>の展開を考えることで公式()も得ることができる。 記憶する便法として、<span class="math inline">\(a\)</span>による形式的な微分をしても良いが、 ローラン展開をして<span class="math inline">\(1/(z-a)\)</span>の係数を求めているのが本質であることを理解して欲しい。</p>
+<h3 id="実定積分への応用">実定積分への応用</h3>
+<p>複素積分は、実関数の定積分の値を求めるのに用いることができる。 複素積分を用いるのは、原始関数は求められないが、ある特別な区間においては定積分の値が求まる場合と、 原始関数が求められる場合でも複素積分を用いたほうが計算が簡単である場合がある。</p>
+<p>物理数学において出てくる積分のパターンには、まず</p>
+<p><span class="math display">\[
+  \int_{-\infty}^{\infty} \frac{f(x)}{g(x)} \mathrm{d} x
+\]</span></p>
+<p>というタイプがある。ただし<span class="math inline">\(f(x)\)</span>、<span class="math inline">\(g(x)\)</span>はそれぞれ<span class="math inline">\(m\)</span>次と<span class="math inline">\(n\)</span>次の多項式であり、 <span class="math inline">\(m\le n + 2\)</span>を満たすとする。さらに<span class="math inline">\(g(x)=0\)</span>は実数解を持たないとする。</p>
+<p>まず、前者の場合は、 積分路<span class="math inline">\(C\)</span>を図のように半円型にとり、 複素積分</p>
+<p><span class="math display">\[
+  \lim_{R \rightarrow \infty}\int_C \frac{f(z)}{g(z)} \mathrm{d} z
+\]</span></p>
+<p>を考えるのが定石。ここで、円周の積分は半径<span class="math inline">\(R\)</span>を無限大にすれば<span class="math inline">\(0\)</span>となる。 それは、<span class="math inline">\(f(z)\)</span>が<span class="math inline">\(m\)</span>次、<span class="math inline">\(g(z)\)</span>が<span class="math inline">\(n\)</span>次の多項式であり、 <span class="math inline">\(m\le n + 2\)</span>を満たすことから、<span class="math inline">\(\lim |z| \rightarrow \infty\)</span>において</p>
+<p><span class="math display">\[
+  \left| \frac{f(z)}{g(z)} \right| \leq \frac{1}{|z|^2}
+\]</span></p>
+<p>を満たす。 したがって、半径<span class="math inline">\(R\)</span>の円周上<span class="math inline">\(C_1\)</span>において</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \int_{C_1} \frac{f(z)}{g(z)} \mathrm{d} z &amp;\leq&amp; \int_{C_1} \left| \frac{f(z)}{g(z)} \right| \mathrm{d} z \\
+  &amp;\leq&amp; \int_{C_1}  \frac{1}{|z|^2} \mathrm{d} z\\
+  &amp;= &amp; \frac{1}{R}
+\end{aligned}
+\]</span></p>
+<p>以上から、<span class="math inline">\(R \rightarrow \infty\)</span>の極限で、円周上の積分の寄与が<span class="math inline">\(0\)</span>になるのである。 逆に、<span class="math inline">\(|z| \rightarrow \infty\)</span>の極限に対して、<span class="math inline">\(1/z^2\)</span>より早く<span class="math inline">\(0\)</span>になる 複素関数でなければ、円周上の積分を<span class="math inline">\(0\)</span>とおいてはいけない。</p>
+<p>さて、円周の積分が<span class="math inline">\(0\)</span>であるから、「実軸の積分」は「実軸を含む周回積分」と等しいことがわかる。 ここで、複素関数の周回積分は留数定理で簡単に値を求めることができる。 以上より実関数の定積分が複素積分により求められるのである。</p>
+<p>複素積分を使った実定積分には、もう一つ</p>
+<p><span class="math display">\[
+  \int_{-\infty}^{\infty} \frac{f(x)\cos(kx)}{g(x)} \mathrm{d} x
+\]</span></p>
+<p>というパターンがある。ただし、<span class="math inline">\(f(x)\)</span>と<span class="math inline">\(g(x)\)</span> それぞれ<span class="math inline">\(m\)</span>次と<span class="math inline">\(n\)</span>次の多項式であり、 <span class="math inline">\(m\le n + 1\)</span>を満たすとする。さらに<span class="math inline">\(g(x)=0\)</span>は実数解を持たないとする。</p>
+<p>これは複素関数<span class="math inline">\(F(z)\)</span>として、</p>
+<p><span class="math display">\[
+  F(z) =  \frac{f(z) \mathrm{e}^{ikz}}{g(z)}
+\]</span></p>
+<p>を考えるのが定石である。 これについて複素積分を実行し、後で実部をとればよい。<span class="math inline">\(\sin\)</span>の場合も同様に積分後に虚部を取る。</p>
+          </article>
+  </body>
+
+  </html>
