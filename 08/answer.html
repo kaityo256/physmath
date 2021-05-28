@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title></title>
+    <style type="text/css">
+      p {
+        padding-left: 1em;
+      }
+
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      p.caption {
+        display: none;
+      }
+
+      img {
+        width: 100%
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://kaityo256.github.io/python_zero/github-markdown.css" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+        <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="第八回-フーリエ逆変換とジョルダンの補題">第八回 フーリエ逆変換とジョルダンの補題</h1>
+<h2 id="目的">目的</h2>
+<p>フーリエ逆変換を行う際、複素積分の積分路をどのように取るべきかを学ぶ。</p>
+<h2 id="解答">解答</h2>
+<h3 id="section">26. (1)</h3>
+<p>フーリエ変換の定義より、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \hat{f}(k) &amp;= \int_{-\infty}^{\infty} f(x) \mathrm{e}^{-ikx} \mathrm{d} x \\
+  &amp;= \int_{-a}^{a} \mathrm{e}^{-ikx} \mathrm{d} x \\
+  &amp;= \left[ \frac{\mathrm{e}^{-ikx}}{-ik}  \right]_{-a}^a\\
+  &amp;= \frac{1}{ik} \left( \mathrm{e}^{ika} - \mathrm{e}^{-ika} \right)
+\end{aligned}
+\]</span></p>
+<div class="figure">
+<img src="jordan2.png" alt="jordan2.png" />
+<p class="caption">jordan2.png</p>
+</div>
+<p>複素積分を行うための積分路。 全体の積分路<span class="math inline">\(C = C_1+C_2+C_3+C_4\)</span>は、積分路に特異点が無いから<span class="math inline">\(0\)</span>。<span class="math inline">\((x+a)&gt;0\)</span>であれば、十分大きな半径のとき<span class="math inline">\(C_1=0\)</span>となる。また、<span class="math inline">\(C_3\)</span>は、半径<span class="math inline">\(0\)</span>の極限で$-i $であり、求めたい積分は</p>
+<p><span class="math display">\[
+\int_{-\infty}^{\infty} = \int_{C_2}+\int_{C_4} = -\int_{C_3}
+\]</span></p>
+<p>から求まる。<span class="math inline">\((x+a)&lt;0\)</span>の場合は下半面を回らなくてはいけない。</p>
+<h3 id="section-1">26. (2)</h3>
+<p>逆フーリエ変換の定義から、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  f(x) &amp;= \frac{1}{2\pi} \int_{-\infty}^{\infty} \hat{f}(k) \mathrm{e}^{ikx} \mathrm{d} k \\
+  &amp;= \frac{1}{2\pi i}\int_{-\infty}^{\infty} \left( \frac{\mathrm{e}^{i(x+a)k}}{k} - \frac{\mathrm{e}^{i(x-a)k}}{k} \right) \mathrm{d} k
+\end{aligned}
+\]</span></p>
+<p>まず、第一項の積分を計算する。<span class="math inline">\(x+a&gt;0\)</span>の場合、 積分路<span class="math inline">\(C\)</span>を図 <span class="math inline">\(C = C_1 + C_2 + C_3 + C_4\)</span>のように取る。 <span class="math inline">\(C\)</span>の中には極が無いから、</p>
+<p><span class="math display">\[
+  \int_{C} \frac{\mathrm{e}^{i(x+a)z}}{z} \mathrm{d} z = 0
+\]</span></p>
+<p>ジョルダンの補題より大きな半径を取れば<span class="math inline">\(C_1= 0\)</span>である。 また、積分路<span class="math inline">\(C_3\)</span>は、一位の極を時計回りに半分だけ回っているから</p>
+<p><span class="math display">\[
+  \int_{C_3} \frac{\mathrm{e}^{i(x+a)z}}{z} \mathrm{d} z = - \pi i
+\]</span></p>
+<p>である。以上から、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \int_{C_1+C_2+C_3+C_4} \frac{\mathrm{e}^{i(x+a)k}}{k} \mathrm{d} k &amp;= &amp;0 \\
+  \int_{C_2+C_4} \frac{\mathrm{e}^{i(x+a)k}}{k} \mathrm{d} k - \pi i &amp;= &amp;0 \\
+  \therefore \int_{-\infty}^{\infty} \frac{\mathrm{e}^{i(x+a)k}}{k} \mathrm{d} k &amp;= \pi i
+\end{aligned}
+\]</span></p>
+<p>同様に、<span class="math inline">\(x+a &lt;0\)</span>の時には、</p>
+<p><span class="math display">\[
+  \int_{C_2} \frac{\mathrm{e}^{i(x+a)z}}{z} \mathrm{d} z = - \pi i
+\]</span></p>
+<p>となる。</p>
+<p>まとめると、</p>
+<p><span class="math display">\[
+  \int_{-\infty}^{\infty} \frac{\mathrm{e}^{i(x+a)k}}{k} \mathrm{d} k =
+  \left\{
+  \begin{array}{cc}
+    \pi i  &amp; \quad (x &gt; -a) \\
+    -\pi i &amp; \quad (x &lt; -a)
+  \end{array}
+  \right.
+\]</span></p>
+<p>積分の第二項も同様に、</p>
+<p><span class="math display">\[
+  \int_{-\infty}^{\infty} \frac{\mathrm{e}^{i(x-a)k}}{k} \mathrm{d} k =
+  \left\{
+  \begin{array}{cc}
+    \pi i  &amp; \quad (x&gt;a) \\
+    -\pi i &amp; \quad (x&lt;a)
+  \end{array}
+  \right.
+\]</span></p>
+<p>以上をまとめると、</p>
+<p><span class="math display">\[
+  f(x) = \left\{
+  \begin{array}{cc}
+    0 &amp; \quad x &lt; -a        \\
+    1 &amp; \quad -a \leq x &lt; a \\
+    0 &amp; \quad a \leq x
+  \end{array}
+  \right.
+\]</span></p>
+<p>となり、確かに元の関数に一致する。</p>
+<h3 id="section-2">27. (1)</h3>
+<p>全体をフーリエ変換すると、</p>
+<p><span class="math display">\[
+  (ik)^2 \hat{f} - \hat{f} = {\mathcal F}[\mathrm{e}^{-|x|}]
+\]</span></p>
+<p>ここで、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  {\mathcal F}[\mathrm{e}^{-|x|}] &amp;=
+  \int_{-\infty}^{\infty} \mathrm{e}^{-|x|} e^{-ikx} \mathrm{d} x\\
+  &amp;=
+  \int_{-\infty}^{0} \mathrm{e}^{x} e^{-ikx} \mathrm{d} x +
+  \int_{0}^{\infty} \mathrm{e}^{-x} e^{-ikx} \mathrm{d} x \\
+  &amp;= \frac{1}{1-ik} + \frac{1}{1+ik}\\
+  &amp;= \frac{2}{1+k^2}
+\end{aligned}
+\]</span></p>
+<p>以上から、</p>
+<p><span class="math display">\[
+  \hat{f}(k) = - \frac{2}{(1+k^2)^2}
+\]</span></p>
+<h3 id="section-3">27. (2)</h3>
+<p>逆フーリエ変換の定義より、</p>
+<p><span class="math display">\[
+  f(x) = - \frac{1}{2\pi} \int_{-\infty}^{\infty}  \frac{\mathrm{e}^{ikx}}{(1+k^2)^2} \mathrm{d} k
+\]</span></p>
+<p><span class="math inline">\(x&gt;0\)</span>のとき、複素平面の上を通る半円を積分路とすると、</p>
+<p><span class="math display">\[
+  \int_{-\infty}^{\infty}  \frac{\mathrm{e}^{ikx}}{(1+k^2)^2} \mathrm{d} k
+  = \int_C  \frac{\mathrm{e}^{ixz}}{(1+z^2)^2} \mathrm{d} z
+\]</span></p>
+<p>このとき、積分路の中に、2位の極<span class="math inline">\(z = i\)</span>があるから、 <span class="math inline">\(F(z) = \displaystyle \frac{2 \mathrm{e}^{ixz}}{(z+i)^2}\)</span>とすれば、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \int_C  \frac{\mathrm{e}^{ixz}}{(1+z^2)^2} \mathrm{d} z &amp;= \int_C  \frac{F(z)}{(z-i)^2} \mathrm{d} z \\
+  &amp;= 2 \pi i F&#39;(i) \\
+  &amp;= \frac{2\pi (1+x)}{2} \mathrm{e}^{-x}
+\end{aligned}
+\]</span></p>
+<p>すなわち、</p>
+<p><span class="math display">\[
+  f(x) = - \frac{(1+x)}{2} \mathrm{e}^{-x}
+\]</span></p>
+<p>同様に、<span class="math inline">\(x&lt;0\)</span>のときは</p>
+<p><span class="math display">\[
+  f(x) = - \frac{(1-x)}{2} \mathrm{e}^{x}
+\]</span></p>
+<p>まとめると、</p>
+<p><span class="math display">\[
+  f(x) = - \frac{(1+|x|)}{2} \mathrm{e}^{-|x|}
+\]</span></p>
+<h3 id="section-4">27. (3)</h3>
+<p><span class="math inline">\(x&gt;0\)</span>のとき、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  f(x) &amp;= -\frac{(1+x)}{2}e^{-x}\\
+  \frac{\mathrm{d}}{\mathrm{d} x} f(x) &amp;= \frac{x}{2}e^{-x}\\
+  \frac{\mathrm{d}^2}{\mathrm{d} x^2}  f(x) &amp;= \frac{(1-x)}{2}e^{-x}\\
+\end{aligned}
+\]</span></p>
+<p>以上から、</p>
+<p><span class="math display">\[
+  \frac{\mathrm{d}^2}{\mathrm{d} x^2}  f(x) - f(x) = \mathrm{e}^{-x}
+\]</span></p>
+<p><span class="math inline">\(x&lt;0\)</span>の場合も同様。</p>
+<h2 id="解説">解説</h2>
+<p>関数<span class="math inline">\(f(x)\)</span>のフーリエ変換<span class="math inline">\(\hat{f}(k)\)</span>が存在するためには、積分</p>
+<p><span class="math display">\[
+  \int_{-\infty}^{\infty} |f(x)|  \mathrm{d} x
+\]</span></p>
+<p>が有限でなくてはならない。これを <strong>絶対可積分</strong> であるという。 フーリエ変換が可能である条件は、<span class="math inline">\(f(x)\)</span>が区分的に滑らかで、 絶対可積分であることである。</p>
+<p>さて、フーリエ逆変換は、以下の積分で与えられる。</p>
+<p><span class="math display">\[
+  f(x) = \frac{1}{2\pi}\int_{-\infty}^{\infty} \hat{f}(k) \mathrm{e}^{ikx} \mathrm{d} k
+\]</span></p>
+<p>さて、この積分を、複素積分を用いて</p>
+<p><span class="math display">\[
+  f(x) = \frac{1}{2\pi} \int_{C} F(z) \mathrm{e}^{ixz} \mathrm{d} z
+\]</span></p>
+<p>を用いて計算したい。このとき、積分路<span class="math inline">\(C\)</span>をどのように決めるべきだろうか。 ただし、<span class="math inline">\(|z| \rightarrow \infty\)</span>において<span class="math inline">\(F(z) \rightarrow 0\)</span>であるとする。 複素積分においては、半円形の積分路が良く取られるが、 半円の半径<span class="math inline">\(R\)</span>を十分大きくしたときに半円の積分の寄与が<span class="math inline">\(0\)</span>になる必要がある。</p>
+<p>まず、積分路を図の<span class="math inline">\(C_1\)</span>(複素平面の上半分の半円)のように取ることを考える。 <span class="math inline">\(u,i\)</span>を実数とし、<span class="math inline">\(z = u + iv\)</span>としよう。</p>
+<p><span class="math display">\[
+  |\mathrm{e}^{ixz}| = |\mathrm{e}^{ixu - vx}| = \mathrm{e}^{- vx}
+\]</span></p>
+<p>であるから、<span class="math inline">\(v \rightarrow \infty\)</span>、すなわち虚軸の上の方で <span class="math inline">\(\mathrm{e}^{ixz}\)</span>が<span class="math inline">\(0\)</span>となるためには、<span class="math inline">\(x&gt;0\)</span>でなくてはならない。 逆に<span class="math inline">\(x&lt;0\)</span>の時には、<span class="math inline">\(\displaystyle \lim_{\mathrm{Im} z \rightarrow \infty} \mathrm{e}^{ixz} \rightarrow \infty\)</span>となるため、 積分路を<span class="math inline">\(C_2\)</span>のように取らなくてはいけない。</p>
+<p>以上をまとめて、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \lim_{R\rightarrow \infty}  \int_{C_1} F(z) \mathrm{e}^{iaz} \mathrm{d} z &amp;= 0 \qquad (a&gt;0)\\
+  \lim_{R\rightarrow \infty}  \int_{C_2} F(z) \mathrm{e}^{iaz} \mathrm{d} z &amp;= 0 \qquad (a&lt;0)
+\end{aligned}
+\]</span></p>
+<p>を <strong>ジョルダンの補題</strong> という。これはフーリエ逆変換を行う際、 積分路をどのように決めるべきかを考える上で重要である。</p>
+<div class="figure">
+<img src="jordan.png" alt="jordan.png" />
+<p class="caption">jordan.png</p>
+</div>
+<p>ジョルダンの補題。<span class="math inline">\(F(z)\mathrm{e}^{ikx}\)</span>の積分においては、<span class="math inline">\(x\)</span>の値によって積分路を変える必要がある。<span class="math inline">\(x&gt;0\)</span>の場合は<span class="math inline">\(C_1\)</span>(上半面)を、<span class="math inline">\(x&lt;0\)</span>の場合は<span class="math inline">\(C_2\)</span>(下半面)を通る積分路を取る。</p>
+          </article>
+  </body>
+
+  </html>
