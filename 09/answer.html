@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title></title>
+    <style type="text/css">
+      p {
+        padding-left: 1em;
+      }
+
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      p.caption {
+        display: none;
+      }
+
+      img {
+        width: 100%
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://kaityo256.github.io/python_zero/github-markdown.css" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+        <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="第九回-ラプラス変換">第九回 ラプラス変換</h1>
+<h2 id="目的">目的</h2>
+<p>ラプラス変換とは何かを学ぶ。ラプラス変換により、微分方程式の 初期値問題が簡単に解けることを理解する。 ラプラス逆変換の公式を複素積分により導けるようにする。</p>
+<h2 id="解答">解答</h2>
+<h3 id="section">28. (1)</h3>
+<p>フーリエ変換の場合と同様に部分積分を行う。ただし、積分が<span class="math inline">\(x=0\)</span>からであるため、<span class="math inline">\(f(0)\)</span>などが出てくることに注意。</p>
+<p><span class="math display">\[
+\begin{aligned}
+  {\mathcal L}[f&#39;(x)] &amp;= \int_0^\infty \mathrm{d} x f&#39;(x)\mathrm{e}^{-sx} \\
+  &amp;= \left[ -f(x)\mathrm{e}^{-sx} \right]_0^{\infty}  +  s \int_0^\infty \mathrm{d} x f(x) \mathrm{e}^{-sx}\\
+  &amp;= s {\mathcal L}[f(x)] + f&#39;(0)
+\end{aligned}
+\]</span></p>
+<p>高次の微分も同様。</p>
+<h3 id="section-1">28. (2)</h3>
+<p>ラプラス変換の定義から、</p>
+<p><span class="math display">\[
+  {\mathcal L}[\mathrm{e}^{ax }f(x)] = \int_0^\infty \mathrm{d} x f(x)\mathrm{e}^{-(s-a)x}
+\]</span></p>
+<p><span class="math inline">\(s-a = s&#39;\)</span>と思えば、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  {\mathcal L}[\mathrm{e}^{ax }f(x)] &amp;= \int_0^\infty \mathrm{d} x f(x)\mathrm{e}^{-s&#39;x}\\
+  &amp;= \hat{f}(s&#39;)\\
+  &amp;= \hat{f}(s-a)
+\end{aligned}
+\]</span></p>
+<h3 id="section-2">28. (3)</h3>
+<p><span class="math display">\[
+\begin{aligned}
+  {\mathcal L}[f*g(x)] &amp;=  \int_{0}^{\infty} \mathrm{d} x \mathrm{e}^{-sx} \int_{0}^{x} \mathrm{d} y f(x-y)g(y)
+\end{aligned}
+\]</span></p>
+<p>ここで、積分順序を入れ替える。</p>
+<p><span class="math display">\[
+  \int_0^{\infty} \mathrm{d} x \int_0^{x} \mathrm{d} y = \int_0^{\infty} \mathrm{d} y \int_y^{\infty} \mathrm{d} x
+\]</span></p>
+<p>に注意すると、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  {\mathcal L}[f*g(x)] &amp;=  \int_0^{\infty} \mathrm{d} y \int_y^{\infty} \mathrm{d} x  \mathrm{e}^{-sx} f(x-y)g(y) \\
+  &amp;= \int_0^{\infty} \mathrm{d} y g(y) \int_y^{\infty} \mathrm{d} x  \mathrm{e}^{-sx} f(x-y) \\
+  &amp;= \int_0^{\infty} \mathrm{d} y g(y) \mathrm{e}^{-py} \int_y^{\infty} \mathrm{d} x  \mathrm{e}^{-s(x-y)} f(x-y) \\
+  &amp;= \int_0^{\infty} \mathrm{d} y g(y) \mathrm{e}^{-py} \int_0^{\infty} \mathrm{d} x&#39;  \mathrm{e}^{-sx&#39;} f(x&#39;) \\
+  &amp;= {\mathcal L}[g] {\mathcal L}[f]
+\end{aligned}
+\]</span></p>
+<p>ただし、途中で<span class="math inline">\(x-y = x&#39;\)</span>とおくことで、二項目の積分を<span class="math inline">\(y\)</span>に依存しないようにした。</p>
+<h3 id="section-3">29. (1)</h3>
+<p>ラプラス変換の定義から、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  {\mathcal L}[1] &amp;= \int_0^{\infty} \mathrm{e}^{-sx} \mathrm{d} x\\
+  &amp;= \frac{1}{s}
+\end{aligned}
+\]</span></p>
+<h3 id="section-4">29. (2)</h3>
+<p><span class="math display">\[
+\begin{aligned}
+  {\mathcal L}[\delta(x)] &amp;= \int_0^{\infty} \mathrm{d} x \delta(x) \mathrm{e}^{-sx}\\
+  &amp;= 1
+\end{aligned}
+\]</span></p>
+<h3 id="section-5">29. (3)</h3>
+<p><span class="math display">\[
+\begin{aligned}
+  {\mathcal L}[x] &amp;= \int_0^{\infty}  x \mathrm{e}^{-sx} \mathrm{d} x\\
+  &amp;= \left[ \frac{x \mathrm{e}^{-sx}}{-s} \right]_0^{\infty} + \frac{1}{s} \int_0^{\infty} \mathrm{e}^{-sx} \mathrm{d} x\\
+  &amp;= \left[ -\frac{\mathrm{e}^{-sx}}{s^2} \right]_0^{\infty} \\
+  &amp;= \frac{1}{s^2}
+\end{aligned}
+\]</span></p>
+<h3 id="section-6">29. (2)</h3>
+<p><span class="math display">\[
+\begin{aligned}
+  {\mathcal L}[\mathrm{e}^{\alpha x}] &amp;= \int_0^{\infty}  \mathrm{e}^{\alpha x} \mathrm{e}^{-sx} \mathrm{d} x\\
+  &amp;= \int_0^{\infty}  \mathrm{e}^{-(s-\alpha)x} \mathrm{d} x\\
+  &amp;= \left[ - \frac{\mathrm{e}^{-(s-\alpha)x}}{s-\alpha}  \right]_0^{\infty}\\
+  &amp;= \frac{1}{s-\alpha}
+\end{aligned}
+\]</span></p>
+<p>ただし、<span class="math inline">\(x \rightarrow \infty\)</span>で<span class="math inline">\(\mathrm{e}^{-(s-\alpha)x} \rightarrow 0\)</span>であるために、<span class="math inline">\({\mathrm Re} s &gt; \alpha\)</span>でなくてはならない。</p>
+<h3 id="section-7">30. (1)</h3>
+<p>逆ラプラス変換の定義から、</p>
+<p><span class="math display">\[
+  f(x) = \frac{1}{2 \pi i} \int_{a-i\infty}^{\alpha+i\infty} \mathrm{d} s \frac{\mathrm{e}^{sx}}{s-\alpha}
+\]</span></p>
+<p>ここで、複素積分を用いるが、<span class="math inline">\(\mathrm{e}^{sx}\)</span>があるため、<span class="math inline">\(x\)</span>の正負によって積分範囲を変える必要がある。<span class="math inline">\(x&gt;0\)</span>の時は図<span class="math inline">\(\ref{fig_laplace_int}\)</span>の左のように積分路<span class="math inline">\(C\)</span>を取ることで、ジョルダンの補題から円弧の部分の積分の寄与は<span class="math inline">\(0\)</span>である。また、積分路の中には<span class="math inline">\(z=\alpha\)</span>が一位の極として含まれるので、留数定理より</p>
+<p><span class="math display">\[
+\begin{aligned}
+  f(x) &amp;= \frac{1}{2 \pi i} \int_C \mathrm{d} z \frac{\mathrm{e}^{zx}}{z-\alpha}\\
+  &amp;= \mathrm{e}^{\alpha x}
+\end{aligned}
+\]</span></p>
+<p><span class="math inline">\(x&lt;0\)</span>の場合は逆向きに積分路を取る。このとき、積分路の中には極が含まれないため、</p>
+<p><span class="math display">\[
+  f(x) = 0
+\]</span></p>
+<p>以上から、</p>
+<p><span class="math display">\[
+  f(x) = \left\{
+  \begin{array}{cc}
+    0       &amp; \qquad x&lt;0 \\
+    \mathrm{e}^{ax} &amp; \qquad x&gt;0
+  \end{array}
+  \right.
+\]</span></p>
+<div class="figure">
+<img src="laplace_int.png" alt="laplace_int.png" />
+<p class="caption">laplace_int.png</p>
+</div>
+<p>ラプラス逆変換を行うための積分路。ジョルダンの補題により、<span class="math inline">\(\mathrm{e}^{sx}\)</span>があるため、<span class="math inline">\(x&gt;0\)</span>の場合は左、<span class="math inline">\(x&lt;0\)</span>の場合は右を周る積分路を取らなくてはならない。このとき、ラプラス変換が存在する条件は、<span class="math inline">\(s\)</span>の実部がすべての極の実部よりも大きいことなので、<span class="math inline">\(x&lt;0\)</span>の場合は必ず<span class="math inline">\(0\)</span>となる。</p>
+<h3 id="section-8">30. (2)</h3>
+<p>前問と同様に<span class="math inline">\(x&lt;0\)</span>では<span class="math inline">\(f(x) = 0\)</span>となるので、<span class="math inline">\(x&gt;0\)</span>の場合のみ考える。</p>
+<p><span class="math display">\[
+\begin{aligned}
+  f(x) &amp;= \frac{1}{2 \pi i} \int_C \mathrm{d} z \frac{z \mathrm{e}^{zx}}{z^2+c^2}
+\end{aligned}
+\]</span></p>
+<p>ここで、特異点は<span class="math inline">\(z = ic, -ic\)</span>の二つで、それぞれ一位の極である。 <span class="math inline">\(z = ic\)</span>における留数は、</p>
+<p><span class="math display">\[
+  \left. \frac{z \mathrm{e}^{zx}}{z+ic} \right|_{z = ic} = \frac{1}{2}\mathrm{e}^{icx}
+\]</span></p>
+<p>同様に<span class="math inline">\(z = -ic\)</span>における留数は、</p>
+<p><span class="math display">\[
+  \left. \frac{z \mathrm{e}^{zx}}{z-ic} \right|_{z = -ic} = \frac{1}{2}\mathrm{e}^{-icx}
+\]</span></p>
+<p>両方足せば、</p>
+<p><span class="math display">\[
+  f(x) = \frac{\mathrm{e}^{icx}+\mathrm{e}^{-icx}}{2} = \cos cx
+\]</span></p>
+<p>を得る。</p>
+<h3 id="section-9">31. (1)</h3>
+<p>微分方程式全体をラプラス変換すると、<span class="math inline">\(f(0)=f&#39;(0)=0\)</span>より、</p>
+<p><span class="math display">\[
+  (s^2 - 2s +1) \hat{y}(s) = \frac{1}{s^2}
+\]</span></p>
+<p>すなわち、</p>
+<p><span class="math display">\[
+  \hat{y}(s) = \frac{1}{s^2 (s-1)^2}
+\]</span></p>
+<p>これを部分分数分解すると、</p>
+<p><span class="math display">\[
+  \hat{y}(s) = \frac{-2}{s-1} + \frac{1}{(s-1)^2} + \frac{2}{s} + \frac{1}{s^2}
+\]</span></p>
+<p>ここで、それぞれ</p>
+<p><span class="math display">\[
+\begin{aligned}
+  {\mathcal L}[\mathrm{e}^x] &amp;= \frac{1}{s-1}\\
+  {\mathcal L}[x\mathrm{e}^x] &amp;= \frac{1}{(s-1)^2}\\
+  {\mathcal L}[1] &amp;= \frac{1}{s}\\
+  {\mathcal L}[x] &amp;= \frac{1}{s^2}
+\end{aligned}
+\]</span></p>
+<p>であるから、</p>
+<p><span class="math display">\[
+  f(x) = -2 \mathrm{e}^{x}+x\mathrm{e}^x+2+x
+\]</span></p>
+<p>微分方程式全体をラプラス変換すると、<span class="math inline">\(f(0)=f&#39;(0)=0\)</span>より、</p>
+<p><span class="math display">\[
+  (s^2 + 2s +1) \hat{y}(s) = \frac{1}{s}
+\]</span></p>
+<p>すなわち、</p>
+<p><span class="math display">\[
+  \hat{y}(s) = \frac{1}{s(s+1)^2}
+\]</span></p>
+<p>右辺を部分分数分解する。 やりかたを丁寧に解説すると、</p>
+<p><span class="math display">\[
+  \frac{1}{s(s+1)^2} = \frac{a}{s} + \frac{b}{s+1} + \frac{c}{(s+1)^2}
+\]</span></p>
+<p>と分解できたとすると、両辺に<span class="math inline">\(s\)</span>をかけてから<span class="math inline">\(s=0\)</span>を代入すれば、それは<span class="math inline">\(a\)</span>である。すなわち、</p>
+<p><span class="math display">\[
+  a = \left. \frac{1}{(s+1)^2}\right|_{s=0} = 1
+\]</span></p>
+<p>同様に<span class="math inline">\((s+1)^2\)</span>を両辺にかけて<span class="math inline">\(s=-1\)</span>を代入すれば、</p>
+<p><span class="math display">\[
+  c = \left. \frac{1}{s}\right|_{s=-1} = -1
+\]</span></p>
+<p><span class="math inline">\(b\)</span>を求めるには、<span class="math inline">\((s+1)^2\)</span>を両辺にかけて微分してから<span class="math inline">\(s=-1\)</span>を代入する。 よって、</p>
+<p><span class="math display">\[
+  b = \left. \left(\frac{1}{s}\right)^2 \right|_{s=-1} = -1
+\]</span></p>
+<p>以上より、</p>
+<p><span class="math display">\[
+  \hat{y}(s) =  \frac{1}{s} - \frac{1}{s+1} - \frac{1}{(s+1)^2}
+\]</span></p>
+<p>逆ラプラス変換すれば、</p>
+<p><span class="math display">\[
+  y(x) =  1 - \mathrm{e}^{-x} - x\mathrm{e}^{-x}
+\]</span></p>
+<p>これは確かに<span class="math inline">\(y(0)=y&#39;(0) = 0\)</span>であり、代入すると解になっている。</p>
+<h2 id="解説">解説</h2>
+<h3 id="ラプラス変換">ラプラス変換</h3>
+<p>フーリエ変換では、関数<span class="math inline">\(f(x)\)</span>は無限区間<span class="math inline">\(-\infty &lt; x &lt; \infty\)</span>で定義されていた。変数を時間だと思えば、これは系に安定に存在する解について調べていることになる。それに対し、電気回路にスイッチを入れたり、バネをはじいたりと、それまで静的であった系になんらかの刺激を与えたときの応答を知りたい場合がよくある。そのような過渡的な現象の解析に威力を発揮するのが <strong>ラプラス変換 (Laplace transform)</strong> である。過渡的な現象は、微分方程式の初期値問題を解くことに帰着される。ラプラス変換は、微分方程式の初期値問題を簡単に解く処方箋を与える。</p>
+<h3 id="ラプラス変換とフーリエ変換">ラプラス変換とフーリエ変換</h3>
+<p>ある関数<span class="math inline">\(f(x)\)</span>に対して、次のような関数<span class="math inline">\(g(x)\)</span>を考える。</p>
+<p><span class="math display">\[
+  g(x) = \left\{
+  \begin{array}{cc}
+    0             &amp; \qquad x&lt;0      \\
+    \mathrm{e}^{-ax} f(x) &amp; \qquad x \geq 0
+  \end{array}
+  \right.
+\]</span></p>
+<p>ここで、<span class="math inline">\(g(x)\)</span>をフーリエ変換すると、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  {\mathcal F}[g(x)] &amp;= \int_{-\infty}^{\infty} \mathrm{d} x g(x) \mathrm{e}^{-ikx}\\
+  &amp;= \int_{0}^{\infty} \mathrm{d} x \mathrm{e}^{-ax} f(x) \mathrm{e}^{-ikx}\\
+  &amp;= \int_{0}^{\infty} \mathrm{d} x f(x) \mathrm{e}^{-(a+ik)x}
+\end{aligned}
+\]</span></p>
+<p>ここで、<span class="math inline">\(s = a+ik\)</span>とすると、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \int_{0}^{\infty} \mathrm{d} x f(x) \mathrm{e}^{-(a+ik)x} &amp;= \int_{0}^{\infty} \mathrm{d} x f(x) \mathrm{e}^{-sx}\\
+  &amp;= {\mathcal L}[f(x)]
+\end{aligned}
+\]</span></p>
+<p>これは<span class="math inline">\(f(x)\)</span>のラプラス変換に他ならない。フーリエ変換不可能な関数でも、<span class="math inline">\(a\)</span>を十分に大きく取れば<span class="math inline">\(\mathrm{e}^{-ax} f(x)\)</span>の積分が収束し、ラプラス変換が可能である場合がある。すなわち、ラプラス変換とは、<span class="math inline">\(\mathrm{e}^{-ax}\)</span>をかけて収束範囲を広げたフーリエ変換と考えることができる。</p>
+<p>さて、<span class="math inline">\({\mathcal F}[g(x)]\)</span>をフーリエ逆変換しよう。</p>
+<p><span class="math display">\[
+\begin{aligned}
+  g(x) &amp;= \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d} k {\mathcal F}[g(x)] \mathrm{e}^{ikx}\\
+  &amp;= \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d} k \hat{f}(s) \mathrm{e}^{ikx}
+\end{aligned}
+\]</span></p>
+<p>ここで、<span class="math inline">\({\mathcal F}[g(x)] = \hat{f}(s)\)</span>であり、<span class="math inline">\(x&gt;0\)</span>であれば<span class="math inline">\(g(x) = \mathrm{e}^{-ax} f(x)\)</span>であるから、</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \mathrm{e}^{-ax} f(x) &amp;= \frac{1}{2\pi }  \int_{-\infty}^{\infty} \mathrm{d} k \hat{f}(s) \mathrm{e}^{ikx}\\
+  f(x) &amp;= \frac{1}{2\pi }  \int_{-\infty}^{\infty} \mathrm{d} k \hat{f}(s) \mathrm{e}^{(a+ik)x}\\
+\end{aligned}
+\]</span></p>
+<p><span class="math inline">\(s = a + ik\)</span>と置くと、<span class="math inline">\(\mathrm{d} s = i \mathrm{d} k\)</span>、 積分範囲が$a - &lt; s &lt; a + $となることから、</p>
+<p><span class="math display">\[
+  f(x) = \frac{1}{2\pi i}  \int_{a-\infty}^{a+\infty} \mathrm{d} s \hat{f}(s) \mathrm{e}^{sx}\\
+\]</span></p>
+<p>これは、ラプラス逆変換の定義である。</p>
+<p>ここで<span class="math inline">\(a\)</span>は 積分</p>
+<p><span class="math display">\[
+  \int_0^{\infty} \mathrm{e}^{-ax} |f(x)| \mathrm{d} x
+\]</span></p>
+<p>が収束するように選ばれたのであった。これは、<span class="math inline">\(a\)</span>が<span class="math inline">\(f(x)\)</span>のすべての極よりも右側にくることを意味する。これによりラプラス逆変換が<span class="math inline">\(x&lt;0\)</span>の時に<span class="math inline">\(f(x)=0\)</span>となる。また、<span class="math inline">\(s = a + ik\)</span>とおいたので、<span class="math inline">\({\mathrm Re} s = a\)</span>である。ラプラス変換において、<span class="math inline">\(s\)</span>は一般に任意の複素数であるが、その実部は十分に(ラプラス変換が収束するように)選ばれなければならない。</p>
+<h3 id="非同次方程式とたたみ込み積分">非同次方程式とたたみ込み積分</h3>
+<p>ラプラス変換は、線形非同次方程式を解くのに威力を発揮する(以下線形を略す)。非同次方程式とは、次のような形の微分方程式である。</p>
+<p><span class="math display">\[
+  u&#39;&#39;(x) + u(x) = f(x) 
+\]</span></p>
+<p>まず、<span class="math inline">\(f(x)=\delta(x)\)</span>と置いた方程式を</p>
+<p><span class="math display">\[
+  v&#39;&#39;(x) + v(x) = \delta(x)
+\]</span></p>
+<p>と書こう。この解<span class="math inline">\(v(x)\)</span>が得られたとすると、<span class="math inline">\(u\)</span>を<span class="math inline">\(v\)</span>で表すことができる。まず、方程式全体をラプラス変換することで、</p>
+<p><span class="math display">\[
+  {\mathcal L}[v] = \frac{1}{s^2+1} 
+\]</span></p>
+<p>であることが分かる。 また、式()をラプラス変換すれば、</p>
+<p><span class="math display">\[
+  {\mathcal L}[u] = \frac{{\mathcal L}[f]}{s^2+1}
+\]</span></p>
+<p>である。式()と式()を見比べれば、</p>
+<p><span class="math display">\[
+  {\mathcal L}[u] = {\mathcal L}[v] {\mathcal L}[f]
+\]</span></p>
+<p>たたみ込み積分のラプラス変換の性質から <span class="math inline">\({\mathcal L}[v] {\mathcal L}[f] = {\mathcal L}[v*f]\)</span> であるから、</p>
+<p><span class="math display">\[
+  u(x) = \int_0^{x} v(x-y)f(x)  \mathrm{d} y
+\]</span></p>
+<p>と<span class="math inline">\(u(x)\)</span>を<span class="math inline">\(v(x)\)</span>で表すことができた。</p>
+<p>すなわち、{}。</p>
+<p>デルタ関数とたたみ込み積分には物理的に重要な関係がある。過渡的な現象にはたたみ込み積分が現れることが多い。ある時刻<span class="math inline">\(t=0\)</span>にデルタ関数的な刺激を与えたとき、その出力(応答)が時刻<span class="math inline">\(t\)</span>で<span class="math inline">\(w(t)\)</span>となるような系を考える。たとえば、LCR回路に瞬間的に電圧をかけたり、ぴんと張った弦を弾いたりすると、系はしばらく振動して、やがて落ち着いていくだろう。このような応答を <strong>インパルス応答</strong> と呼び、工学では特に重要な概念である。</p>
+<p>デルタ関数に対する応答<span class="math inline">\(w(t)\)</span>を用いて、任意の入力<span class="math inline">\(f(x)\)</span>に対する出力<span class="math inline">\(h(t)\)</span>は</p>
+<p><span class="math display">\[
+  h(t) = \int_0^t w(t-s) f(s) \mathrm{d} s
+\]</span></p>
+<p>とたたみ込み積分の形で書くことができる。この式は、時刻<span class="math inline">\(s\)</span>での入力<span class="math inline">\(f(s)\)</span>が、重み<span class="math inline">\(w(t-s)\)</span>で時刻<span class="math inline">\(t\)</span>での出力<span class="math inline">\(h(t)\)</span>に影響を与えているという意味を持っている。</p>
+          </article>
+  </body>
+
+  </html>
